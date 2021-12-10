@@ -2,48 +2,68 @@ CREATE DATABASE cellular;
 
 USE cellular;
 
-CREATE TABLE IF NOT EXISTS Passports(
-    Id INT NOT NULL AUTO_INCREMENT,
-    Series VARCHAR(4) NOT NULL,
-    Num VARCHAR(6) NOT NULL,
-    DateOfIssue DATE NOT NULL,
-    IssuingAuthority VARCHAR(63) NOT NULL,
-    Name VARCHAR(63) NOT NULL,
-    Surname VARCHAR(63) NOT NULL,
-    Patronymic VARCHAR(63) NULL DEFAULT NULL,
-    DateOfBirth DATE NOT NULL,
-    Address VARCHAR(255) NOT NULL,
-    PRIMARY KEY(Id),
-    UNIQUE KEY(Series, Num)
-);
+CREATE TABLE `Passports` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Series` VARCHAR(4) CHARACTER SET utf8mb4 NOT NULL,
+    `Num` VARCHAR(6) CHARACTER SET utf8mb4 NOT NULL,
+    `DateOfIssue` DATE NOT NULL,
+    `IssuingAuthority` VARCHAR(63) CHARACTER SET utf8mb4 NOT NULL,
+    `Surname` VARCHAR(63) CHARACTER SET utf8mb4 NOT NULL,
+    `Name` VARCHAR(63) CHARACTER SET utf8mb4 NOT NULL,
+    `Patronymic` VARCHAR(63) CHARACTER SET utf8mb4 NULL,
+    `DateOfBirth` DATE NOT NULL,
+    `Address` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_Passports` PRIMARY KEY (`Id`)
+) CHARACTER SET utf8mb4;
 
-CREATE TABLE IF NOT EXISTS Clients(
-    Id INT NOT NULL AUTO_INCREMENT,
-	PassportId INT NOT NULL,
-	PRIMARY KEY(Id),
-	CONSTRAINT IX_Clients_PassportId FOREIGN KEY (PassportId) REFERENCES Passports (Id)
-);
 
-CREATE TABLE IF NOT EXISTS PhoneNumbers(
-    Id INT NOT NULL AUTO_INCREMENT,
-	Num VARCHAR(11) NOT NULL UNIQUE,
-	ClientId INT NOT NULL,
-	RegistrationDate DATE NOT NULL,
-	PRIMARY KEY (Id),
-	CONSTRAINT IX_PhoneNumbers_ClientId FOREIGN KEY (ClientId) REFERENCES Clients (Id),
-    UNIQUE KEY(Num)
-);
+CREATE TABLE `Clients` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `PassportId` int NOT NULL,
+    CONSTRAINT `PK_Clients` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Clients_Passports_PassportId` FOREIGN KEY (`PassportId`) REFERENCES `Passports` (`Id`) ON DELETE CASCADE
+) CHARACTER SET utf8mb4;
 
-CREATE TABLE IF NOT EXISTS Calls(
-    Id INT NOT NULL AUTO_INCREMENT,
-	StartTime DATETIME NOT NULL,
-	EndTime DATETIME NOT NULL,
-	OutgoingPhoneNumberId INT not NULL,
-	IncomingPhoneNumberId INT not NULL,
-	PRIMARY KEY (Id),
-    CONSTRAINT IX_Calls_OutgoingPhoneNumberId FOREIGN KEY (OutgoingPhoneNumberId) REFERENCES PhoneNumbers (Id),
-    CONSTRAINT IX_Calls_IncomingPhoneNumberId FOREIGN KEY (IncomingPhoneNumberId) REFERENCES PhoneNumbers (Id)
-);
+
+CREATE TABLE `PhoneNumbers` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `ClientId` int NOT NULL,
+    `Num` VARCHAR(11) CHARACTER SET utf8mb4 NOT NULL,
+    `RegistrationDate` DATE NOT NULL,
+    `Active` BOOLEAN(1) NOT NULL,
+    CONSTRAINT `PK_PhoneNumbers` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PhoneNumbers_Clients_ClientId` FOREIGN KEY (`ClientId`) REFERENCES `Clients` (`Id`) ON DELETE CASCADE
+) CHARACTER SET utf8mb4;
+
+
+CREATE TABLE `Calls` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `OutgoingPhoneNumberId` int NOT NULL,
+    `IncomingPhoneNumberId` int NOT NULL,
+    `StartTime` datetime(6) NOT NULL,
+    `EndTime` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Calls` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Calls_PhoneNumbers_IncomingPhoneNumberId` FOREIGN KEY (`IncomingPhoneNumberId`) REFERENCES `PhoneNumbers` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_Calls_PhoneNumbers_OutgoingPhoneNumberId` FOREIGN KEY (`OutgoingPhoneNumberId`) REFERENCES `PhoneNumbers` (`Id`) ON DELETE CASCADE
+) CHARACTER SET utf8mb4;
+
+
+CREATE INDEX `IX_Calls_IncomingPhoneNumberId` ON `Calls` (`IncomingPhoneNumberId`);
+
+
+CREATE INDEX `IX_Calls_OutgoingPhoneNumberId` ON `Calls` (`OutgoingPhoneNumberId`);
+
+
+CREATE UNIQUE INDEX `IX_Clients_PassportId` ON `Clients` (`PassportId`);
+
+
+CREATE UNIQUE INDEX `IX_Passport_SeriesAndNum` ON `Passports` (`Series`, `Num`);
+
+
+CREATE UNIQUE INDEX `IX_PhoneNumber_Num` ON `PhoneNumbers` (`Num`);
+
+
+CREATE INDEX `IX_PhoneNumbers_ClientId` ON `PhoneNumbers` (`ClientId`);
 
 
 -- remove tables
