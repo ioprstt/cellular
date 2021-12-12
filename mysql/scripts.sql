@@ -1,4 +1,4 @@
-CREATE DATABASE cellular;
+CREATE DATABASE cellular CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE cellular;
 
@@ -81,5 +81,9 @@ INSERT INTO `Passports` (`Id`, `Series`, `Num`, `DateOfIssue`, `IssuingAuthority
 INSERT INTO `Clients` (`Id`, `PassportId`) VALUES (NULL, '1');
 INSERT INTO `Clients` (`Id`, `PassportId`) VALUES (NULL, '2');
 
-INSERT INTO `PhoneNumbers` (`Id`, `Num`, `ClientId`, `RegistrationDate`) VALUES (NULL, '88005553535', '1', '2001-02-02');
+INSERT INTO `PhoneNumbers` (`Id`, `Num`, `ClientId`, `RegistrationDate`) VALUES (NULL, '89005553535', '1', '2001-02-02');
 INSERT INTO `PhoneNumbers` (`Id`, `Num`, `ClientId`, `RegistrationDate`) VALUES (NULL, '89057777777', '2', '2011-10-07');
+
+INSERT INTO `Calls` (`Id`, `OutgoingPhoneNumberId`, `IncomingPhoneNumberId`, `StartTime`, `EndTime`) VALUES (NULL, '1', '2', '2021-12-01 10:39:52.000000', '2021-12-12 13:39:52.000000');
+INSERT INTO `Calls` (`Id`, `OutgoingPhoneNumberId`, `IncomingPhoneNumberId`, `StartTime`, `EndTime`) VALUES (NULL, '2', '1', '2021-12-01 10:39:52.000000', '2021-12-12 10:39:59.000000');
+INSERT INTO `Calls` (`Id`, `OutgoingPhoneNumberId`, `IncomingPhoneNumberId`, `StartTime`, `EndTime`) VALUES (NULL, '1', '2', '2021-12-01 12:39:52.000000', '2021-12-12 12:51:52.000000');

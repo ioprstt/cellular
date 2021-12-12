@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace cellular
 {
+
     public static class Utils
     {
         public static string ValidatePhone(string phoneNumber)
@@ -42,6 +43,11 @@ namespace cellular
         public static bool IsNumber(char value)
         {
             return Char.IsDigit(value);
+        }
+
+        public static void Debug(object value)
+        {
+            System.Diagnostics.Debug.WriteLine(value);
         }
     }
 

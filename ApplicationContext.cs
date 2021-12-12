@@ -121,7 +121,7 @@ namespace cellular
         }
     }
 
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<Passport> Passports { get; set; }
         public DbSet<Client> Clients { get; set; }
@@ -140,6 +140,14 @@ namespace cellular
                 "server=127.0.0.1;user=root;password=root;database=cellular;port=3306;",
                 new MySqlServerVersion(new Version(8, 0, 27))
             );
+        }
+
+        public void Load()
+        {
+            Passports.Load();
+            Clients.Load();
+            PhoneNumbers.Load();
+            Calls.Load();
         }
     }
 }
