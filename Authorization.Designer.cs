@@ -33,13 +33,14 @@ namespace cellular
             this.radioButtonUser = new System.Windows.Forms.RadioButton();
             this.radioButtonAdmin = new System.Windows.Forms.RadioButton();
             this.buttonLogin = new System.Windows.Forms.Button();
+            this.radioButtonOperator = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(37, 19);
+            this.label1.Location = new System.Drawing.Point(37, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 32);
             this.label1.TabIndex = 0;
@@ -49,7 +50,7 @@ namespace cellular
             // 
             this.radioButtonUser.AutoSize = true;
             this.radioButtonUser.Checked = true;
-            this.radioButtonUser.Location = new System.Drawing.Point(78, 71);
+            this.radioButtonUser.Location = new System.Drawing.Point(78, 62);
             this.radioButtonUser.Name = "radioButtonUser";
             this.radioButtonUser.Size = new System.Drawing.Size(102, 19);
             this.radioButtonUser.TabIndex = 3;
@@ -60,7 +61,7 @@ namespace cellular
             // radioButtonAdmin
             // 
             this.radioButtonAdmin.AutoSize = true;
-            this.radioButtonAdmin.Location = new System.Drawing.Point(78, 107);
+            this.radioButtonAdmin.Location = new System.Drawing.Point(78, 148);
             this.radioButtonAdmin.Name = "radioButtonAdmin";
             this.radioButtonAdmin.Size = new System.Drawing.Size(112, 19);
             this.radioButtonAdmin.TabIndex = 4;
@@ -71,7 +72,7 @@ namespace cellular
             // buttonLogin
             // 
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLogin.Location = new System.Drawing.Point(37, 151);
+            this.buttonLogin.Location = new System.Drawing.Point(37, 189);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(181, 32);
             this.buttonLogin.TabIndex = 5;
@@ -79,11 +80,23 @@ namespace cellular
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
+            // radioButtonOperator
+            // 
+            this.radioButtonOperator.AutoSize = true;
+            this.radioButtonOperator.Location = new System.Drawing.Point(78, 103);
+            this.radioButtonOperator.Name = "radioButtonOperator";
+            this.radioButtonOperator.Size = new System.Drawing.Size(79, 19);
+            this.radioButtonOperator.TabIndex = 6;
+            this.radioButtonOperator.TabStop = true;
+            this.radioButtonOperator.Text = "Оператор";
+            this.radioButtonOperator.UseVisualStyleBackColor = true;
+            // 
             // Authorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 205);
+            this.ClientSize = new System.Drawing.Size(266, 242);
+            this.Controls.Add(this.radioButtonOperator);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.radioButtonAdmin);
             this.Controls.Add(this.radioButtonUser);
@@ -101,5 +114,6 @@ namespace cellular
         private System.Windows.Forms.RadioButton radioButtonUser;
         private System.Windows.Forms.RadioButton radioButtonAdmin;
         private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.RadioButton radioButtonOperator;
     }
 }

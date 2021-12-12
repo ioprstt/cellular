@@ -160,7 +160,7 @@ namespace cellular
             this.dataGridViewIncoming.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewIncoming.Name = "dataGridViewIncoming";
             this.dataGridViewIncoming.RowTemplate.Height = 25;
-            this.dataGridViewIncoming.Size = new System.Drawing.Size(761, 248);
+            this.dataGridViewIncoming.Size = new System.Drawing.Size(761, 215);
             this.dataGridViewIncoming.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1

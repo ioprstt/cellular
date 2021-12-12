@@ -14,7 +14,6 @@ namespace cellular
     {
         private string phoneNumber; 
         private UserManager userManager;
-        private ApplicationContext db = new ApplicationContext();
 
         public UserWindow(PhoneNumber phone)
         {

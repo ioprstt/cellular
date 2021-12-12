@@ -1,7 +1,7 @@
 ﻿
 namespace cellular
 {
-    partial class AdminAuth
+    partial class OperatorAuth
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,10 @@ namespace cellular
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonLogin = new System.Windows.Forms.Button();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(370, 32);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Вход в кабинет администратора";
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(65, 55);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PlaceholderText = "Пароль";
-            this.textBoxPassword.Size = new System.Drawing.Size(246, 23);
-            this.textBoxPassword.TabIndex = 17;
-            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // buttonLogin
             // 
@@ -60,22 +40,42 @@ namespace cellular
             this.buttonLogin.Location = new System.Drawing.Point(107, 96);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(181, 32);
-            this.buttonLogin.TabIndex = 21;
+            this.buttonLogin.TabIndex = 24;
             this.buttonLogin.Text = "Войти";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // AdminAuth
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(65, 55);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PlaceholderText = "Пароль";
+            this.textBoxPassword.Size = new System.Drawing.Size(246, 23);
+            this.textBoxPassword.TabIndex = 23;
+            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(42, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(306, 32);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Вход в кабинет оператора";
+            // 
+            // OperatorAuth
             // 
             this.AcceptButton = this.buttonLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 148);
+            this.ClientSize = new System.Drawing.Size(400, 143);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label1);
-            this.Name = "AdminAuth";
-            this.Text = "Администратор";
+            this.Name = "OperatorAuth";
+            this.Text = "Оператор";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,8 +83,8 @@ namespace cellular
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label label1;
     }
 }

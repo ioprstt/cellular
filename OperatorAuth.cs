@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace cellular
 {
-    public partial class Authorization : Form
+    public partial class OperatorAuth : Form
     {
-        public Authorization()
+        public OperatorAuth()
         {
             InitializeComponent();
             CenterToScreen();
@@ -20,14 +20,11 @@ namespace cellular
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            Form authForm;
-            if (radioButtonUser.Checked)
-                authForm = new UserAuth();
-            else if (radioButtonOperator.Checked)
-                authForm = new OperatorAuth();
+            string password = this.textBoxPassword.Text;
+            if (password == "operator")
+                FormRunner.RunForm(this, new OperatorWindow());
             else
-                authForm = new AdminAuth();
-            FormRunner.RunForm(this, authForm);
+                Msg.ShowErrorMessage("Неверный пароль");
         }
     }
 }
