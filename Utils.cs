@@ -115,4 +115,19 @@ namespace cellular
             return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
     }
+
+    public class ComboBoxItem
+    {
+        public int Key { get; set; }
+        public string Value { get; set; }
+        public ComboBoxItem(int key, string value)
+        {
+            Key = key; 
+            Value = value;
+        }
+        public override string ToString()
+        {
+            return Value;
+        }
+    }
 }

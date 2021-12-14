@@ -149,5 +149,10 @@ namespace cellular
             PhoneNumbers.Load();
             Calls.Load();
         }
+
+        public void LoadPassports() { Passports.Load(); }
+        public void LoadClients() { Clients.Load(); }
+        public void LoadPhoneNumbers() { PhoneNumbers.Load(); }
+        public void LoadCalls() { Calls.Load(); }
     }
 }

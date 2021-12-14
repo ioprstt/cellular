@@ -52,6 +52,7 @@ namespace cellular
             this.textBoxPassword.PlaceholderText = "Пароль";
             this.textBoxPassword.Size = new System.Drawing.Size(246, 23);
             this.textBoxPassword.TabIndex = 23;
+            this.textBoxPassword.Text = "operator";
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 

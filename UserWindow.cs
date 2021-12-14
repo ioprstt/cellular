@@ -12,7 +12,7 @@ namespace cellular
 {
     public partial class UserWindow : Form
     {
-        private string phoneNumber; 
+        private string phoneNumber;
         private UserManager userManager;
 
         public UserWindow(PhoneNumber phone)
@@ -71,11 +71,12 @@ namespace cellular
 
         public string GetFullName()
         {
-            Passport pasport = user.Passport;
-            string fullName = $"{pasport.Surname} {pasport.Name}";
-            if (pasport.Patronymic is not null)
-                fullName = $"{fullName} {pasport.Patronymic}";
-            return fullName;
+            return new PassportManager(user.Passport).GetFullName();
+        }
+
+        public string GetFullPassport()
+        {
+            return new PassportManager(user.Passport).GetFullPassport();
         }
 
         public DateTime GetDateOfBirth()
@@ -91,6 +92,34 @@ namespace cellular
         public IQueryable<Call> GetIncomingCalls(string phoneNumber, ApplicationContext db)
         {
             return db.Calls.Where(p => p.IncomingPhoneNumber.Num == phoneNumber);
+        }
+    }
+
+    public class PassportManager
+    {
+        Passport passport;
+
+        public PassportManager(Passport passport)
+        {
+            this.passport = passport;
+        }
+
+        public string GetFullName()
+        {
+            string fullName = $"{passport.Surname} {passport.Name}";
+            if (passport.Patronymic is not null)
+                fullName = $"{fullName} {passport.Patronymic}";
+            return fullName;
+        }
+
+        public string GetFullPassport()
+        {
+            return $"{passport.Series} {passport.Num}";
+        }
+
+        public string GetNameAndPassport()
+        {
+            return $"{GetFullName()} | {GetFullPassport()}";
         }
     }
 }
