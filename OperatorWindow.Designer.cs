@@ -38,6 +38,9 @@ namespace cellular
             this.linkLabelGetCalls = new System.Windows.Forms.LinkLabel();
             this.linkLabelGetClientPhones = new System.Windows.Forms.LinkLabel();
             this.linkLabelChangePassport = new System.Windows.Forms.LinkLabel();
+            this.buttonSelectClient = new System.Windows.Forms.Button();
+            this.labelSelectedClient = new System.Windows.Forms.Label();
+            this.buttonResetClient = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // linkLabelCreateClient
@@ -66,7 +69,7 @@ namespace cellular
             // 
             this.linkLabelCreatePhone.AutoSize = true;
             this.linkLabelCreatePhone.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelCreatePhone.Location = new System.Drawing.Point(12, 314);
+            this.linkLabelCreatePhone.Location = new System.Drawing.Point(13, 398);
             this.linkLabelCreatePhone.Name = "linkLabelCreatePhone";
             this.linkLabelCreatePhone.Size = new System.Drawing.Size(180, 32);
             this.linkLabelCreatePhone.TabIndex = 15;
@@ -78,7 +81,7 @@ namespace cellular
             // 
             this.linkLabelRemoveClient.AutoSize = true;
             this.linkLabelRemoveClient.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelRemoveClient.Location = new System.Drawing.Point(12, 104);
+            this.linkLabelRemoveClient.Location = new System.Drawing.Point(13, 188);
             this.linkLabelRemoveClient.Name = "linkLabelRemoveClient";
             this.linkLabelRemoveClient.Size = new System.Drawing.Size(197, 32);
             this.linkLabelRemoveClient.TabIndex = 16;
@@ -90,7 +93,7 @@ namespace cellular
             // 
             this.linkLabelRemovePhone.AutoSize = true;
             this.linkLabelRemovePhone.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelRemovePhone.Location = new System.Drawing.Point(11, 355);
+            this.linkLabelRemovePhone.Location = new System.Drawing.Point(12, 439);
             this.linkLabelRemovePhone.Name = "linkLabelRemovePhone";
             this.linkLabelRemovePhone.Size = new System.Drawing.Size(181, 32);
             this.linkLabelRemovePhone.TabIndex = 17;
@@ -102,7 +105,7 @@ namespace cellular
             // 
             this.linkLabelGetClientPassport.AutoSize = true;
             this.linkLabelGetClientPassport.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelGetClientPassport.Location = new System.Drawing.Point(12, 153);
+            this.linkLabelGetClientPassport.Location = new System.Drawing.Point(13, 237);
             this.linkLabelGetClientPassport.Name = "linkLabelGetClientPassport";
             this.linkLabelGetClientPassport.Size = new System.Drawing.Size(445, 32);
             this.linkLabelGetClientPassport.TabIndex = 18;
@@ -114,7 +117,7 @@ namespace cellular
             // 
             this.linkLabelGetCalls.AutoSize = true;
             this.linkLabelGetCalls.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelGetCalls.Location = new System.Drawing.Point(12, 398);
+            this.linkLabelGetCalls.Location = new System.Drawing.Point(13, 482);
             this.linkLabelGetCalls.Name = "linkLabelGetCalls";
             this.linkLabelGetCalls.Size = new System.Drawing.Size(437, 32);
             this.linkLabelGetCalls.TabIndex = 19;
@@ -126,7 +129,7 @@ namespace cellular
             // 
             this.linkLabelGetClientPhones.AutoSize = true;
             this.linkLabelGetClientPhones.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelGetClientPhones.Location = new System.Drawing.Point(11, 243);
+            this.linkLabelGetClientPhones.Location = new System.Drawing.Point(12, 327);
             this.linkLabelGetClientPhones.Name = "linkLabelGetClientPhones";
             this.linkLabelGetClientPhones.Size = new System.Drawing.Size(404, 32);
             this.linkLabelGetClientPhones.TabIndex = 20;
@@ -138,7 +141,7 @@ namespace cellular
             // 
             this.linkLabelChangePassport.AutoSize = true;
             this.linkLabelChangePassport.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelChangePassport.Location = new System.Drawing.Point(12, 201);
+            this.linkLabelChangePassport.Location = new System.Drawing.Point(13, 285);
             this.linkLabelChangePassport.Name = "linkLabelChangePassport";
             this.linkLabelChangePassport.Size = new System.Drawing.Size(448, 32);
             this.linkLabelChangePassport.TabIndex = 21;
@@ -146,11 +149,44 @@ namespace cellular
             this.linkLabelChangePassport.Text = "Обновить паспортные данные клиента";
             this.linkLabelChangePassport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelChangePassport_LinkClicked);
             // 
+            // buttonSelectClient
+            // 
+            this.buttonSelectClient.Location = new System.Drawing.Point(13, 105);
+            this.buttonSelectClient.Name = "buttonSelectClient";
+            this.buttonSelectClient.Size = new System.Drawing.Size(179, 32);
+            this.buttonSelectClient.TabIndex = 22;
+            this.buttonSelectClient.Text = "Выбрать клиента";
+            this.buttonSelectClient.UseVisualStyleBackColor = true;
+            this.buttonSelectClient.Click += new System.EventHandler(this.buttonSelectClient_Click);
+            // 
+            // labelSelectedClient
+            // 
+            this.labelSelectedClient.AutoSize = true;
+            this.labelSelectedClient.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSelectedClient.Location = new System.Drawing.Point(199, 131);
+            this.labelSelectedClient.Name = "labelSelectedClient";
+            this.labelSelectedClient.Size = new System.Drawing.Size(170, 25);
+            this.labelSelectedClient.TabIndex = 23;
+            this.labelSelectedClient.Text = "Клиент не выбран";
+            // 
+            // buttonResetClient
+            // 
+            this.buttonResetClient.Location = new System.Drawing.Point(14, 153);
+            this.buttonResetClient.Name = "buttonResetClient";
+            this.buttonResetClient.Size = new System.Drawing.Size(179, 32);
+            this.buttonResetClient.TabIndex = 24;
+            this.buttonResetClient.Text = "Сбросить клиента";
+            this.buttonResetClient.UseVisualStyleBackColor = true;
+            this.buttonResetClient.Click += new System.EventHandler(this.buttonResetClient_Click);
+            // 
             // OperatorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 530);
+            this.Controls.Add(this.buttonResetClient);
+            this.Controls.Add(this.labelSelectedClient);
+            this.Controls.Add(this.buttonSelectClient);
             this.Controls.Add(this.linkLabelChangePassport);
             this.Controls.Add(this.linkLabelGetClientPhones);
             this.Controls.Add(this.linkLabelGetCalls);
@@ -178,5 +214,8 @@ namespace cellular
         private System.Windows.Forms.LinkLabel linkLabelGetCalls;
         private System.Windows.Forms.LinkLabel linkLabelGetClientPhones;
         private System.Windows.Forms.LinkLabel linkLabelChangePassport;
+        private System.Windows.Forms.Button buttonSelectClient;
+        private System.Windows.Forms.Label labelSelectedClient;
+        private System.Windows.Forms.Button buttonResetClient;
     }
 }

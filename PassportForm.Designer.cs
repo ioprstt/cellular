@@ -70,6 +70,7 @@ namespace cellular
             // textBoxSeries
             // 
             this.textBoxSeries.Location = new System.Drawing.Point(125, 12);
+            this.textBoxSeries.MaxLength = 4;
             this.textBoxSeries.Name = "textBoxSeries";
             this.textBoxSeries.Size = new System.Drawing.Size(338, 23);
             this.textBoxSeries.TabIndex = 0;
@@ -165,6 +166,7 @@ namespace cellular
             // textBoxNum
             // 
             this.textBoxNum.Location = new System.Drawing.Point(125, 48);
+            this.textBoxNum.MaxLength = 6;
             this.textBoxNum.Name = "textBoxNum";
             this.textBoxNum.Size = new System.Drawing.Size(338, 23);
             this.textBoxNum.TabIndex = 11;

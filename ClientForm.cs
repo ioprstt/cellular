@@ -45,7 +45,7 @@ namespace cellular
                 if (form.DialogResult == DialogResult.OK)
                 {
                     Passport passport = form.GetCurrentPassport();
-                    PassportManager passportManager = new PassportManager(passport);
+                    PassportManager passportManager = new PassportManager(passport.Id);
                     this.passportsInfo.Add(passport.Id, passportManager.GetNameAndPassport());
                     InitComboBoxClientFormPassports();
                     this.comboBoxClientFormPassports.SelectedIndex = this.comboBoxClientFormPassports.Items.Count - 1;

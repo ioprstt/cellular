@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 //using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Proxies;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace cellular
 {
@@ -66,7 +67,7 @@ namespace cellular
 
         public override string ToString()
         {
-            UserManager userManager = new UserManager(this);
+            UserManager userManager = new UserManager(this.Id);
             return userManager.GetFullName();
         }
     }
@@ -136,9 +137,9 @@ namespace cellular
         {
             optionsBuilder
                 .UseLazyLoadingProxies()
-                .UseMySql(
-                "server=127.0.0.1;user=root;password=root;database=cellular;port=3306;",
-                new MySqlServerVersion(new Version(8, 0, 27))
+                .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.DetachedLazyLoadingWarning))
+                .UseMySql("server=127.0.0.1;user=root;password=root;database=cellular;port=3306;", 
+                          new MySqlServerVersion(new Version(8, 0, 27))
             );
         }
 
@@ -149,10 +150,5 @@ namespace cellular
             PhoneNumbers.Load();
             Calls.Load();
         }
-
-        public void LoadPassports() { Passports.Load(); }
-        public void LoadClients() { Clients.Load(); }
-        public void LoadPhoneNumbers() { PhoneNumbers.Load(); }
-        public void LoadCalls() { Calls.Load(); }
     }
 }

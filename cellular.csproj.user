@@ -22,6 +22,9 @@
     <Compile Update="PassportForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SearchClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UserAuth.cs">
       <SubType>Form</SubType>
     </Compile>

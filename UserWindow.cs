@@ -24,7 +24,7 @@ namespace cellular
 
             phoneNumber = phone.Num;
 
-            userManager = new UserManager(phone.Client);
+            userManager = new UserManager(phone.Client.Id);
 
             labelGreeting.Text = $"Добро пожаловать, {userManager.GetFullName()}";
             labelPhone.Text = $"Номер телефона: {phone}";
@@ -57,69 +57,6 @@ namespace cellular
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             UpdateCalls();
-        }
-    }
-
-    public class UserManager
-    {
-        private Client user;
-
-        public UserManager(Client client)
-        {
-            user = client;
-        }
-
-        public string GetFullName()
-        {
-            return new PassportManager(user.Passport).GetFullName();
-        }
-
-        public string GetFullPassport()
-        {
-            return new PassportManager(user.Passport).GetFullPassport();
-        }
-
-        public DateTime GetDateOfBirth()
-        {
-            return user.Passport.DateOfBirth;
-        }
-
-        public IQueryable<Call> GetOutgoingCalls(string phoneNumber, ApplicationContext db)
-        {
-            return db.Calls.Where(p => p.OutgoingPhoneNumber.Num == phoneNumber);
-        }
-
-        public IQueryable<Call> GetIncomingCalls(string phoneNumber, ApplicationContext db)
-        {
-            return db.Calls.Where(p => p.IncomingPhoneNumber.Num == phoneNumber);
-        }
-    }
-
-    public class PassportManager
-    {
-        Passport passport;
-
-        public PassportManager(Passport passport)
-        {
-            this.passport = passport;
-        }
-
-        public string GetFullName()
-        {
-            string fullName = $"{passport.Surname} {passport.Name}";
-            if (passport.Patronymic is not null)
-                fullName = $"{fullName} {passport.Patronymic}";
-            return fullName;
-        }
-
-        public string GetFullPassport()
-        {
-            return $"{passport.Series} {passport.Num}";
-        }
-
-        public string GetNameAndPassport()
-        {
-            return $"{GetFullName()} | {GetFullPassport()}";
         }
     }
 }
