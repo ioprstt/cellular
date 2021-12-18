@@ -3,19 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-//using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Proxies;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-
-namespace cellular
-{
-    [Index(nameof(Series), nameof(Num), IsUnique = true)]
-    public class Passport
-=======
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
@@ -26,39 +13,19 @@ using System.Data.Entity.ModelConfiguration;
 namespace cellular
 {
     public partial class Passport
->>>>>>> acb11c1 (ef6 and net472)
     {
         [Key]
         public int Id { get; set; }
 
-<<<<<<< HEAD
-        [Column(TypeName = "VARCHAR(4)"), Required]
-        public string Series { get; set; }
-        
-        [Column(TypeName = "VARCHAR(6)"), Required]
-=======
         [Column(TypeName = "VARCHAR"), MaxLength(4), MinLength(4), Required, Index("IX_Pasports_SeriesAndNum", IsUnique = true)]
         public string Series { get; set; }
         
         [Column(TypeName = "VARCHAR"), MaxLength(6), MinLength(6), Required, Index("IX_Pasports_SeriesAndNum", IsUnique = true)]
->>>>>>> acb11c1 (ef6 and net472)
         public string Num { get; set; }
         
         [Column(TypeName = "DATE"), Required]
         public DateTime DateOfIssue { get; set; }
         
-<<<<<<< HEAD
-        [Column(TypeName = "VARCHAR(63)"), Required]
-        public string IssuingAuthority { get; set; }
-        
-        [Column(TypeName = "VARCHAR(63)"), Required]
-        public string Surname { get; set; }
-        
-        [Column(TypeName = "VARCHAR(63)"), Required]
-        public string Name { get; set; }
-        
-        [Column(TypeName = "VARCHAR(63)")]
-=======
         [Column(TypeName = "VARCHAR"), MaxLength(63), Required]
         public string IssuingAuthority { get; set; }
         
@@ -69,32 +36,18 @@ namespace cellular
         public string Name { get; set; }
         
         [Column(TypeName = "VARCHAR"), MaxLength(11)]
->>>>>>> acb11c1 (ef6 and net472)
         public string Patronymic { get; set; }
         
         [Column(TypeName = "DATE"), Required]
         public DateTime DateOfBirth { get; set; }
         
-<<<<<<< HEAD
-        [Column(TypeName = "VARCHAR(255)"), Required]
-        public string Address { get; set; }
-
-        public virtual Client Client { get; set; }
-
-=======
         [Column(TypeName = "VARCHAR"), MaxLength(255), Required]
         public string Address { get; set; }
 
->>>>>>> acb11c1 (ef6 and net472)
         public override string ToString()
         {
             return $"{Series} {Num}";
         }
-<<<<<<< HEAD
-    }
-
-    public class Client
-=======
 
         public void Update(Passport passport)
         {
@@ -111,19 +64,12 @@ namespace cellular
     }
 
     public partial class Client
->>>>>>> acb11c1 (ef6 and net472)
     {
         [Key]
         public int Id { get; set; }
         
-<<<<<<< HEAD
-        [Required]
-        public int PassportId { get; set; }
-        [ForeignKey("PassportId")]
-=======
         public int PassportId { get; set; }
         //[ForeignKey("PassportId")]
->>>>>>> acb11c1 (ef6 and net472)
         public virtual Passport Passport { get; set; }
 
         public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
@@ -135,20 +81,6 @@ namespace cellular
         }
     }
 
-<<<<<<< HEAD
-    [Index(nameof(Num), IsUnique = true)]
-    public class PhoneNumber
-    {
-        [Key]
-        public int Id { get; set; }
-        
-        [Required]
-        public int ClientId { get; set; }
-        [ForeignKey("ClientId")]
-        public virtual Client Client { get; set; }
-        
-        [Column(TypeName = "VARCHAR(11)"), Required]
-=======
     public partial class PhoneNumber
     {
         [Key]
@@ -159,7 +91,6 @@ namespace cellular
         public virtual Client Client { get; set; }
         
         [Column(TypeName = "VARCHAR"), MaxLength(11), MinLength(11), Required, Index("IX_PhoneNumbers_Num", IsUnique = true)]
->>>>>>> acb11c1 (ef6 and net472)
         public string Num { get; set; }
         
         [Column(TypeName = "DATE"), Required]
@@ -171,21 +102,6 @@ namespace cellular
         }
     }
 
-<<<<<<< HEAD
-    public class Call
-    {
-        [Key]
-        public int Id { get; set; }
-        
-        [Required]
-        public int OutgoingPhoneNumberId { get; set; }
-        [ForeignKey("OutgoingPhoneNumberId")]
-        public virtual PhoneNumber OutgoingPhoneNumber { get; set; }
-        
-        [Required]
-        public int IncomingPhoneNumberId { get; set; }
-        [ForeignKey("IncomingPhoneNumberId")]
-=======
     public partial class Call
     {
         [Key]
@@ -197,7 +113,6 @@ namespace cellular
 
         [ForeignKey("IncomingPhoneNumber")]
         public int IncomingPhoneNumberId { get; set; }
->>>>>>> acb11c1 (ef6 and net472)
         public virtual PhoneNumber IncomingPhoneNumber { get; set; }
         
         [Required]
@@ -212,28 +127,6 @@ namespace cellular
         }
     }
 
-<<<<<<< HEAD
-    public class ApplicationContext : DbContext
-    {
-        public DbSet<Passport> Passports { get; set; }
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<PhoneNumber> PhoneNumbers { get; set; }
-        public DbSet<Call> Calls { get; set; }
-
-        public ApplicationContext()
-        {
-            Database.EnsureCreated();  // true, если все создали, false - если что-то не создали (уже есть)
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseLazyLoadingProxies()
-                .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.DetachedLazyLoadingWarning))
-                .UseMySql("server=127.0.0.1;user=root;password=root;database=cellular;port=3306;", 
-                          new MySqlServerVersion(new Version(8, 0, 27))
-            );
-=======
-    //[DbConfigurationType(typeof(MySqlEFConfiguration))
     public class ApplicationContext : DbContext
     {
         public virtual DbSet<Passport> Passports { get; set; }
@@ -266,7 +159,6 @@ CREATE UNIQUE INDEX `IX_PhoneNumber_Num` ON `PhoneNumbers` (`Num`);
             //modelBuilder.Entity<Client>()
             //    .HasRequired(x => x.Passport)
             //    .WithOptional();
->>>>>>> acb11c1 (ef6 and net472)
         }
 
         public void Load()
@@ -276,13 +168,10 @@ CREATE UNIQUE INDEX `IX_PhoneNumber_Num` ON `PhoneNumbers` (`Num`);
             PhoneNumbers.Load();
             Calls.Load();
         }
-<<<<<<< HEAD
-=======
 
         public Client GetClientByPassport(Passport passport)
         {
             return this.Clients.Where(x => x.PassportId == passport.Id).FirstOrDefault();
         }
->>>>>>> acb11c1 (ef6 and net472)
     }
 }

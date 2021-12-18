@@ -37,49 +37,28 @@ namespace cellular
             // label1
             // 
             this.label1.AutoSize = true;
-<<<<<<< HEAD
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(370, 32);
-=======
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label1.Location = new System.Drawing.Point(10, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(371, 32);
->>>>>>> acb11c1 (ef6 and net472)
             this.label1.TabIndex = 13;
             this.label1.Text = "Вход в кабинет администратора";
             // 
             // textBoxPassword
             // 
-<<<<<<< HEAD
-            this.textBoxPassword.Location = new System.Drawing.Point(65, 55);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PlaceholderText = "Пароль";
-            this.textBoxPassword.Size = new System.Drawing.Size(246, 23);
-=======
             this.textBoxPassword.Location = new System.Drawing.Point(56, 48);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(211, 20);
->>>>>>> acb11c1 (ef6 and net472)
             this.textBoxPassword.TabIndex = 17;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // buttonLogin
             // 
-<<<<<<< HEAD
-            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLogin.Location = new System.Drawing.Point(107, 96);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(181, 32);
-=======
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.buttonLogin.Location = new System.Drawing.Point(92, 83);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(155, 33);
->>>>>>> acb11c1 (ef6 and net472)
             this.buttonLogin.TabIndex = 21;
             this.buttonLogin.Text = "Войти";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -88,15 +67,9 @@ namespace cellular
             // AdminAuth
             // 
             this.AcceptButton = this.buttonLogin;
-<<<<<<< HEAD
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 148);
-=======
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 128);
->>>>>>> acb11c1 (ef6 and net472)
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label1);

@@ -134,31 +134,18 @@ namespace cellular
     public class UserManager
     {
         private int clientId;
-<<<<<<< HEAD
-=======
         ApplicationContext db;
->>>>>>> acb11c1 (ef6 and net472)
 
         public UserManager(int clientId)
         {
             this.clientId = clientId;
-<<<<<<< HEAD
-=======
             this.db = new ApplicationContext();
->>>>>>> acb11c1 (ef6 and net472)
         }
 
         private Client GetClient()
         {
             Client client;
-<<<<<<< HEAD
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                client = db.Clients.Where(r => r.Id == this.clientId).FirstOrDefault();
-            }
-=======
             client = db.Clients.Where(r => r.Id == this.clientId).FirstOrDefault();
->>>>>>> acb11c1 (ef6 and net472)
             if (client is null)
                 throw new DbSearchException($"Клиент {this.clientId} не найден");
             return client;
@@ -183,16 +170,6 @@ namespace cellular
             return client.Passport.DateOfBirth;
         }
 
-<<<<<<< HEAD
-        public IQueryable<Call> GetOutgoingCalls(string phoneNumber, ApplicationContext db)
-        {
-            return db.Calls.Where(p => p.OutgoingPhoneNumber.Num == phoneNumber);
-        }
-
-        public IQueryable<Call> GetIncomingCalls(string phoneNumber, ApplicationContext db)
-        {
-            return db.Calls.Where(p => p.IncomingPhoneNumber.Num == phoneNumber);
-=======
         public IQueryable<Call> GetOutgoingCalls(string phoneNumber)
         {
             return this.db.Calls.Where(p => p.OutgoingPhoneNumber.Num == phoneNumber);
@@ -201,38 +178,24 @@ namespace cellular
         public IQueryable<Call> GetIncomingCalls(string phoneNumber)
         {
             return this.db.Calls.Where(p => p.IncomingPhoneNumber.Num == phoneNumber);
->>>>>>> acb11c1 (ef6 and net472)
         }
     }
 
     public class PassportManager
     {
         private int passportId;
-<<<<<<< HEAD
-=======
         private ApplicationContext db;
->>>>>>> acb11c1 (ef6 and net472)
 
         public PassportManager(int passportId)
         {
             this.passportId = passportId;
-<<<<<<< HEAD
-=======
             this.db = new ApplicationContext();
->>>>>>> acb11c1 (ef6 and net472)
         }
 
         private Passport GetPassport()
         {
             Passport passport;
-<<<<<<< HEAD
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                passport = db.Passports.Where(r => r.Id == this.passportId).FirstOrDefault();
-            }
-=======
             passport = this.db.Passports.Where(r => r.Id == this.passportId).FirstOrDefault();
->>>>>>> acb11c1 (ef6 and net472)
             if (passport is null)
                 throw new DbSearchException($"Паспорт {this.passportId} не найден");
             return passport;
@@ -242,11 +205,7 @@ namespace cellular
         {
             Passport passport = this.GetPassport();
             string fullName = $"{passport.Surname} {passport.Name}";
-<<<<<<< HEAD
-            if (passport.Patronymic is not null)
-=======
             if (passport.Patronymic != null)
->>>>>>> acb11c1 (ef6 and net472)
                 fullName = $"{fullName} {passport.Patronymic}";
             return fullName;
         }

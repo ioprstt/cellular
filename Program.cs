@@ -14,7 +14,7 @@ namespace cellular
         [STAThread]
         static void Main()
         {
-            // добавление данных
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             using (ApplicationContext db = new ApplicationContext())
             {
                 /*
@@ -22,12 +22,12 @@ namespace cellular
                     Series = "1234",
                     Num = "567890",
                     DateOfIssue = DateTime.Now.Date,
-                    IssuingAuthority = "ОУФМС России",
-                    Name = "Иван",
-                    Surname = "Иванов",
-                    Patronymic = "Иванович",
+                    IssuingAuthority = "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ",
+                    Name = "пїЅпїЅпїЅпїЅ",
+                    Surname = "пїЅпїЅпїЅпїЅпїЅпїЅ",
+                    Patronymic = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
                     DateOfBirth = new DateTime(1997, 09, 04),
-                    Address = "Владимирская обл."
+                    Address = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ."
                 };
                 
                 db.Passports.Add(pasp);
@@ -35,10 +35,6 @@ namespace cellular
                 */
             }
 
-<<<<<<< HEAD
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-=======
->>>>>>> acb11c1 (ef6 and net472)
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Authorization());

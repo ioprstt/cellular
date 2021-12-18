@@ -13,25 +13,14 @@ namespace cellular
 {
     public partial class PassportForm : Form
     {
-<<<<<<< HEAD
-        private bool create;
-        private Passport currentPassport;
-
-        public PassportForm(bool create = true)
-=======
         ApplicationContext db;
         Passport initPassport;
 
         public PassportForm(Passport passport = null, bool readonly_ = false)
->>>>>>> acb11c1 (ef6 and net472)
         {
             InitializeComponent();
             CenterToScreen();
 
-<<<<<<< HEAD
-            this.create = create;
-            this.currentPassport = null;
-=======
             db = new ApplicationContext();
             initPassport = passport;
 
@@ -40,7 +29,6 @@ namespace cellular
 
             if (readonly_)
                 SetReadonly();
->>>>>>> acb11c1 (ef6 and net472)
         }
 
         public string GetSeries() { return textBoxSeries.Text; }
@@ -53,8 +41,6 @@ namespace cellular
         public DateTime GetDateOfBirth() { return dateTimePickerDateOfBirth.Value.Date; }
         public string GetAddress() { return textBoxAddress.Text; }
 
-<<<<<<< HEAD
-=======
         private void InitValues(Passport passport)
         {
             textBoxSeries.Text = passport.Series;
@@ -86,7 +72,6 @@ namespace cellular
             dateTimePickerDateOfBirth.ValueChanged += (s, args) => dateTimePickerDateOfBirth.Value = dateOfBirth;
         }
 
->>>>>>> acb11c1 (ef6 and net472)
         public bool Validate()
         {
             ValidateSeries();
@@ -98,8 +83,6 @@ namespace cellular
             ValidateDateOfBirth();
             ValidateAddress();
 
-<<<<<<< HEAD
-=======
             string series = this.GetSeries();
             string num = this.GetNum();
             // Проверяем повторение паспорта только если серия и номер не совпадает с паспортом из инициализации
@@ -113,7 +96,6 @@ namespace cellular
                 }
             }
 
->>>>>>> acb11c1 (ef6 and net472)
             Dictionary<ErrorProvider, Control> items = new Dictionary<ErrorProvider, Control> 
             {
                 { errorProviderSeries, textBoxSeries },
@@ -194,52 +176,13 @@ namespace cellular
 
         private void buttonPassprtOK_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            if (this.create)
-            {
-                if (this.Validate())
-                {
-                    using (ApplicationContext db = new ApplicationContext())
-                    {
-                        db.Load();
-                        Passport passport = new Passport {
-                            Series = this.GetSeries(),
-                            Num = this.GetNum(),
-                            DateOfIssue = this.GetDateOfIssue(),
-                            IssuingAuthority = this.GetIssuingAuthority(),
-                            Surname = this.GetSurname(),
-                            Name = this.GetName(),
-                            Patronymic = string.IsNullOrEmpty(this.GetPatronymic()) ? null : this.GetPatronymic(),
-                            DateOfBirth = this.GetDateOfBirth(),
-                            Address = this.GetAddress()
-                        };
-                        db.Passports.Add(passport);
-                        db.SaveChanges();
-                        this.currentPassport = passport;
-                    }
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-
-            }
-=======
             if (!(this.Validate()))
                 return;
 
->>>>>>> acb11c1 (ef6 and net472)
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-<<<<<<< HEAD
-        public Passport GetCurrentPassport() { 
-            return this.currentPassport; 
-=======
         public Passport GetPassport()
         {
             Passport passport = new Passport
@@ -255,7 +198,6 @@ namespace cellular
                 Address = this.GetAddress()
             };
             return passport;
->>>>>>> acb11c1 (ef6 and net472)
         }
     }
 }
