@@ -75,27 +75,27 @@ namespace cellular
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 305);
+            this.button1.Location = new System.Drawing.Point(15, 264);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 23);
+            this.button1.Size = new System.Drawing.Size(143, 20);
             this.button1.TabIndex = 1;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(190, 305);
+            this.buttonChange.Location = new System.Drawing.Point(163, 264);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(167, 23);
+            this.buttonChange.Size = new System.Drawing.Size(143, 20);
             this.buttonChange.TabIndex = 2;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Location = new System.Drawing.Point(363, 305);
+            this.buttonRemove.Location = new System.Drawing.Point(311, 264);
             this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(167, 23);
+            this.buttonRemove.Size = new System.Drawing.Size(143, 20);
             this.buttonRemove.TabIndex = 3;
             this.buttonRemove.Text = "Удалить";
             this.buttonRemove.UseVisualStyleBackColor = true;
@@ -106,18 +106,18 @@ namespace cellular
             this.tabControlAdmin.Controls.Add(this.tabPageClient);
             this.tabControlAdmin.Controls.Add(this.tabPagePhoneNumber);
             this.tabControlAdmin.Controls.Add(this.tabPageCall);
-            this.tabControlAdmin.Location = new System.Drawing.Point(13, 13);
+            this.tabControlAdmin.Location = new System.Drawing.Point(11, 11);
             this.tabControlAdmin.Name = "tabControlAdmin";
             this.tabControlAdmin.SelectedIndex = 0;
-            this.tabControlAdmin.Size = new System.Drawing.Size(775, 286);
+            this.tabControlAdmin.Size = new System.Drawing.Size(664, 248);
             this.tabControlAdmin.TabIndex = 4;
             // 
             // tabPagePassport
             // 
             this.tabPagePassport.Controls.Add(this.dgvAdminPassport);
-            this.tabPagePassport.Location = new System.Drawing.Point(4, 24);
+            this.tabPagePassport.Location = new System.Drawing.Point(4, 22);
             this.tabPagePassport.Name = "tabPagePassport";
-            this.tabPagePassport.Size = new System.Drawing.Size(767, 258);
+            this.tabPagePassport.Size = new System.Drawing.Size(656, 222);
             this.tabPagePassport.TabIndex = 4;
             this.tabPagePassport.Text = "Паспорт";
             this.tabPagePassport.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@ namespace cellular
             this.dgvAdminPassport.Location = new System.Drawing.Point(3, 3);
             this.dgvAdminPassport.Name = "dgvAdminPassport";
             this.dgvAdminPassport.RowTemplate.Height = 25;
-            this.dgvAdminPassport.Size = new System.Drawing.Size(761, 252);
+            this.dgvAdminPassport.Size = new System.Drawing.Size(652, 218);
             this.dgvAdminPassport.TabIndex = 0;
             // 
             // Column1
@@ -207,10 +207,10 @@ namespace cellular
             // tabPageClient
             // 
             this.tabPageClient.Controls.Add(this.dgvAdminClient);
-            this.tabPageClient.Location = new System.Drawing.Point(4, 24);
+            this.tabPageClient.Location = new System.Drawing.Point(4, 22);
             this.tabPageClient.Name = "tabPageClient";
             this.tabPageClient.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageClient.Size = new System.Drawing.Size(767, 258);
+            this.tabPageClient.Size = new System.Drawing.Size(656, 222);
             this.tabPageClient.TabIndex = 1;
             this.tabPageClient.Text = "Клиент";
             this.tabPageClient.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@ namespace cellular
             this.dgvAdminClient.Location = new System.Drawing.Point(3, 3);
             this.dgvAdminClient.Name = "dgvAdminClient";
             this.dgvAdminClient.RowTemplate.Height = 25;
-            this.dgvAdminClient.Size = new System.Drawing.Size(761, 252);
+            this.dgvAdminClient.Size = new System.Drawing.Size(652, 218);
             this.dgvAdminClient.TabIndex = 0;
             // 
             // Column10
@@ -244,9 +244,9 @@ namespace cellular
             // tabPagePhoneNumber
             // 
             this.tabPagePhoneNumber.Controls.Add(this.dgvAdminPhoneNumber);
-            this.tabPagePhoneNumber.Location = new System.Drawing.Point(4, 24);
+            this.tabPagePhoneNumber.Location = new System.Drawing.Point(4, 22);
             this.tabPagePhoneNumber.Name = "tabPagePhoneNumber";
-            this.tabPagePhoneNumber.Size = new System.Drawing.Size(767, 258);
+            this.tabPagePhoneNumber.Size = new System.Drawing.Size(656, 222);
             this.tabPagePhoneNumber.TabIndex = 2;
             this.tabPagePhoneNumber.Text = "Номер телефона";
             this.tabPagePhoneNumber.UseVisualStyleBackColor = true;
@@ -262,7 +262,7 @@ namespace cellular
             this.dgvAdminPhoneNumber.Location = new System.Drawing.Point(3, 3);
             this.dgvAdminPhoneNumber.Name = "dgvAdminPhoneNumber";
             this.dgvAdminPhoneNumber.RowTemplate.Height = 25;
-            this.dgvAdminPhoneNumber.Size = new System.Drawing.Size(761, 252);
+            this.dgvAdminPhoneNumber.Size = new System.Drawing.Size(652, 218);
             this.dgvAdminPhoneNumber.TabIndex = 0;
             // 
             // Column12
@@ -296,9 +296,9 @@ namespace cellular
             // tabPageCall
             // 
             this.tabPageCall.Controls.Add(this.dgvAdminCall);
-            this.tabPageCall.Location = new System.Drawing.Point(4, 24);
+            this.tabPageCall.Location = new System.Drawing.Point(4, 22);
             this.tabPageCall.Name = "tabPageCall";
-            this.tabPageCall.Size = new System.Drawing.Size(767, 258);
+            this.tabPageCall.Size = new System.Drawing.Size(656, 222);
             this.tabPageCall.TabIndex = 3;
             this.tabPageCall.Text = "Вызовы";
             this.tabPageCall.UseVisualStyleBackColor = true;
@@ -315,7 +315,7 @@ namespace cellular
             this.dgvAdminCall.Location = new System.Drawing.Point(3, 3);
             this.dgvAdminCall.Name = "dgvAdminCall";
             this.dgvAdminCall.RowTemplate.Height = 25;
-            this.dgvAdminCall.Size = new System.Drawing.Size(761, 252);
+            this.dgvAdminCall.Size = new System.Drawing.Size(652, 218);
             this.dgvAdminCall.TabIndex = 0;
             // 
             // Column16
@@ -355,19 +355,19 @@ namespace cellular
             // 
             // buttonAdminUpdate
             // 
-            this.buttonAdminUpdate.Location = new System.Drawing.Point(617, 305);
+            this.buttonAdminUpdate.Location = new System.Drawing.Point(529, 264);
             this.buttonAdminUpdate.Name = "buttonAdminUpdate";
-            this.buttonAdminUpdate.Size = new System.Drawing.Size(167, 23);
+            this.buttonAdminUpdate.Size = new System.Drawing.Size(143, 20);
             this.buttonAdminUpdate.TabIndex = 5;
-            this.buttonAdminUpdate.Text = "Обновиь";
+            this.buttonAdminUpdate.Text = "Обновить";
             this.buttonAdminUpdate.UseVisualStyleBackColor = true;
             this.buttonAdminUpdate.Click += new System.EventHandler(this.buttonAdminUpdate_Click);
             // 
             // AdminWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 348);
+            this.ClientSize = new System.Drawing.Size(686, 302);
             this.Controls.Add(this.buttonAdminUpdate);
             this.Controls.Add(this.tabControlAdmin);
             this.Controls.Add(this.buttonRemove);

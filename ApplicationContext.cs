@@ -3,64 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-//using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Proxies;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Data.Entity.ModelConfiguration;
 
 namespace cellular
 {
-    [Index(nameof(Series), nameof(Num), IsUnique = true)]
-    public class Passport
+    public partial class Passport
     {
         [Key]
         public int Id { get; set; }
 
-        [Column(TypeName = "VARCHAR(4)"), Required]
+        [Column(TypeName = "VARCHAR"), MaxLength(4), MinLength(4), Required, Index("IX_Pasports_SeriesAndNum", IsUnique = true)]
         public string Series { get; set; }
         
-        [Column(TypeName = "VARCHAR(6)"), Required]
+        [Column(TypeName = "VARCHAR"), MaxLength(6), MinLength(6), Required, Index("IX_Pasports_SeriesAndNum", IsUnique = true)]
         public string Num { get; set; }
         
         [Column(TypeName = "DATE"), Required]
         public DateTime DateOfIssue { get; set; }
         
-        [Column(TypeName = "VARCHAR(63)"), Required]
+        [Column(TypeName = "VARCHAR"), MaxLength(63), Required]
         public string IssuingAuthority { get; set; }
         
-        [Column(TypeName = "VARCHAR(63)"), Required]
+        [Column(TypeName = "VARCHAR"), MaxLength(11), Required]
         public string Surname { get; set; }
         
-        [Column(TypeName = "VARCHAR(63)"), Required]
+        [Column(TypeName = "VARCHAR"), MaxLength(63), Required]
         public string Name { get; set; }
         
-        [Column(TypeName = "VARCHAR(63)")]
+        [Column(TypeName = "VARCHAR"), MaxLength(11)]
         public string Patronymic { get; set; }
         
         [Column(TypeName = "DATE"), Required]
         public DateTime DateOfBirth { get; set; }
         
-        [Column(TypeName = "VARCHAR(255)"), Required]
+        [Column(TypeName = "VARCHAR"), MaxLength(255), Required]
         public string Address { get; set; }
-
-        public virtual Client Client { get; set; }
 
         public override string ToString()
         {
             return $"{Series} {Num}";
         }
+
+        public void Update(Passport passport)
+        {
+            this.Series = passport.Series;
+            this.Num = passport.Num;
+            this.DateOfIssue = passport.DateOfIssue;
+            this.IssuingAuthority = passport.IssuingAuthority;
+            this.Surname = passport.Surname;
+            this.Name = passport.Name;
+            this.Patronymic = passport.Patronymic;
+            this.DateOfBirth = passport.DateOfBirth;
+            this.Address = passport.Address;
+        }
     }
 
-    public class Client
+    public partial class Client
     {
         [Key]
         public int Id { get; set; }
         
-        [Required]
         public int PassportId { get; set; }
-        [ForeignKey("PassportId")]
+        //[ForeignKey("PassportId")]
         public virtual Passport Passport { get; set; }
 
         public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
@@ -72,18 +81,16 @@ namespace cellular
         }
     }
 
-    [Index(nameof(Num), IsUnique = true)]
-    public class PhoneNumber
+    public partial class PhoneNumber
     {
         [Key]
         public int Id { get; set; }
-        
-        [Required]
+
+        [ForeignKey("Client")]
         public int ClientId { get; set; }
-        [ForeignKey("ClientId")]
         public virtual Client Client { get; set; }
         
-        [Column(TypeName = "VARCHAR(11)"), Required]
+        [Column(TypeName = "VARCHAR"), MaxLength(11), MinLength(11), Required, Index("IX_PhoneNumbers_Num", IsUnique = true)]
         public string Num { get; set; }
         
         [Column(TypeName = "DATE"), Required]
@@ -95,19 +102,17 @@ namespace cellular
         }
     }
 
-    public class Call
+    public partial class Call
     {
         [Key]
         public int Id { get; set; }
-        
-        [Required]
+
+        [ForeignKey("OutgoingPhoneNumber")]
         public int OutgoingPhoneNumberId { get; set; }
-        [ForeignKey("OutgoingPhoneNumberId")]
         public virtual PhoneNumber OutgoingPhoneNumber { get; set; }
-        
-        [Required]
+
+        [ForeignKey("IncomingPhoneNumber")]
         public int IncomingPhoneNumberId { get; set; }
-        [ForeignKey("IncomingPhoneNumberId")]
         public virtual PhoneNumber IncomingPhoneNumber { get; set; }
         
         [Required]
@@ -124,23 +129,36 @@ namespace cellular
 
     public class ApplicationContext : DbContext
     {
-        public DbSet<Passport> Passports { get; set; }
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<PhoneNumber> PhoneNumbers { get; set; }
-        public DbSet<Call> Calls { get; set; }
+        public virtual DbSet<Passport> Passports { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<PhoneNumber> PhoneNumbers { get; set; }
+        public virtual DbSet<Call> Calls { get; set; }
 
         public ApplicationContext()
+            : base("DbConnection")
         {
-            Database.EnsureCreated();  // true, если все создали, false - если что-то не создали (уже есть)
+            bool create = this.Database.CreateIfNotExists();
+
+            // Почему-то EF не создает уникальные индексы по аннотациям. Прописываем их самостоятельно
+            // Создавать индексы нужно только в том случае, если была создана БД, иначе получим ошибку дубликатов
+            if (create)
+            {
+                this.Database.ExecuteSqlCommand(
+@"
+CREATE UNIQUE INDEX `IX_Clients_PassportId` ON `Clients` (`PassportId`);
+
+CREATE UNIQUE INDEX `IX_Passport_SeriesAndNum` ON `Passports` (`Series`, `Num`);
+
+CREATE UNIQUE INDEX `IX_PhoneNumber_Num` ON `PhoneNumbers` (`Num`);
+");
+            }
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            optionsBuilder
-                .UseLazyLoadingProxies()
-                .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.DetachedLazyLoadingWarning))
-                .UseMySql("server=127.0.0.1;user=root;password=root;database=cellular;port=3306;", 
-                          new MySqlServerVersion(new Version(8, 0, 27))
-            );
+            //modelBuilder.Entity<Client>()
+            //    .HasRequired(x => x.Passport)
+            //    .WithOptional();
         }
 
         public void Load()
@@ -149,6 +167,11 @@ namespace cellular
             Clients.Load();
             PhoneNumbers.Load();
             Calls.Load();
+        }
+
+        public Client GetClientByPassport(Passport passport)
+        {
+            return this.Clients.Where(x => x.PassportId == passport.Id).FirstOrDefault();
         }
     }
 }

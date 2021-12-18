@@ -46,10 +46,10 @@ namespace cellular
             // linkLabelCreateClient
             // 
             this.linkLabelCreateClient.AutoSize = true;
-            this.linkLabelCreateClient.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelCreateClient.Location = new System.Drawing.Point(12, 58);
+            this.linkLabelCreateClient.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelCreateClient.Location = new System.Drawing.Point(10, 50);
             this.linkLabelCreateClient.Name = "linkLabelCreateClient";
-            this.linkLabelCreateClient.Size = new System.Drawing.Size(196, 32);
+            this.linkLabelCreateClient.Size = new System.Drawing.Size(197, 32);
             this.linkLabelCreateClient.TabIndex = 0;
             this.linkLabelCreateClient.TabStop = true;
             this.linkLabelCreateClient.Text = "Создать клиента";
@@ -58,20 +58,20 @@ namespace cellular
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.label1.Location = new System.Drawing.Point(10, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(314, 32);
+            this.label1.Size = new System.Drawing.Size(315, 32);
             this.label1.TabIndex = 14;
             this.label1.Text = "Рабочая панель оператора";
             // 
             // linkLabelCreatePhone
             // 
             this.linkLabelCreatePhone.AutoSize = true;
-            this.linkLabelCreatePhone.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelCreatePhone.Location = new System.Drawing.Point(13, 398);
+            this.linkLabelCreatePhone.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelCreatePhone.Location = new System.Drawing.Point(11, 345);
             this.linkLabelCreatePhone.Name = "linkLabelCreatePhone";
-            this.linkLabelCreatePhone.Size = new System.Drawing.Size(180, 32);
+            this.linkLabelCreatePhone.Size = new System.Drawing.Size(181, 32);
             this.linkLabelCreatePhone.TabIndex = 15;
             this.linkLabelCreatePhone.TabStop = true;
             this.linkLabelCreatePhone.Text = "Создать номер";
@@ -80,10 +80,10 @@ namespace cellular
             // linkLabelRemoveClient
             // 
             this.linkLabelRemoveClient.AutoSize = true;
-            this.linkLabelRemoveClient.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelRemoveClient.Location = new System.Drawing.Point(13, 188);
+            this.linkLabelRemoveClient.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelRemoveClient.Location = new System.Drawing.Point(11, 163);
             this.linkLabelRemoveClient.Name = "linkLabelRemoveClient";
-            this.linkLabelRemoveClient.Size = new System.Drawing.Size(197, 32);
+            this.linkLabelRemoveClient.Size = new System.Drawing.Size(198, 32);
             this.linkLabelRemoveClient.TabIndex = 16;
             this.linkLabelRemoveClient.TabStop = true;
             this.linkLabelRemoveClient.Text = "Удалить клиента";
@@ -92,10 +92,10 @@ namespace cellular
             // linkLabelRemovePhone
             // 
             this.linkLabelRemovePhone.AutoSize = true;
-            this.linkLabelRemovePhone.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelRemovePhone.Location = new System.Drawing.Point(12, 439);
+            this.linkLabelRemovePhone.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelRemovePhone.Location = new System.Drawing.Point(10, 380);
             this.linkLabelRemovePhone.Name = "linkLabelRemovePhone";
-            this.linkLabelRemovePhone.Size = new System.Drawing.Size(181, 32);
+            this.linkLabelRemovePhone.Size = new System.Drawing.Size(182, 32);
             this.linkLabelRemovePhone.TabIndex = 17;
             this.linkLabelRemovePhone.TabStop = true;
             this.linkLabelRemovePhone.Text = "Удалить номер";
@@ -104,10 +104,10 @@ namespace cellular
             // linkLabelGetClientPassport
             // 
             this.linkLabelGetClientPassport.AutoSize = true;
-            this.linkLabelGetClientPassport.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelGetClientPassport.Location = new System.Drawing.Point(13, 237);
+            this.linkLabelGetClientPassport.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelGetClientPassport.Location = new System.Drawing.Point(11, 205);
             this.linkLabelGetClientPassport.Name = "linkLabelGetClientPassport";
-            this.linkLabelGetClientPassport.Size = new System.Drawing.Size(445, 32);
+            this.linkLabelGetClientPassport.Size = new System.Drawing.Size(446, 32);
             this.linkLabelGetClientPassport.TabIndex = 18;
             this.linkLabelGetClientPassport.TabStop = true;
             this.linkLabelGetClientPassport.Text = "Получить паспортные данные клиента";
@@ -116,10 +116,10 @@ namespace cellular
             // linkLabelGetCalls
             // 
             this.linkLabelGetCalls.AutoSize = true;
-            this.linkLabelGetCalls.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelGetCalls.Location = new System.Drawing.Point(13, 482);
+            this.linkLabelGetCalls.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelGetCalls.Location = new System.Drawing.Point(11, 418);
             this.linkLabelGetCalls.Name = "linkLabelGetCalls";
-            this.linkLabelGetCalls.Size = new System.Drawing.Size(437, 32);
+            this.linkLabelGetCalls.Size = new System.Drawing.Size(438, 32);
             this.linkLabelGetCalls.TabIndex = 19;
             this.linkLabelGetCalls.TabStop = true;
             this.linkLabelGetCalls.Text = "Получить список звонков для номера";
@@ -128,10 +128,10 @@ namespace cellular
             // linkLabelGetClientPhones
             // 
             this.linkLabelGetClientPhones.AutoSize = true;
-            this.linkLabelGetClientPhones.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelGetClientPhones.Location = new System.Drawing.Point(12, 327);
+            this.linkLabelGetClientPhones.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelGetClientPhones.Location = new System.Drawing.Point(12, 288);
             this.linkLabelGetClientPhones.Name = "linkLabelGetClientPhones";
-            this.linkLabelGetClientPhones.Size = new System.Drawing.Size(404, 32);
+            this.linkLabelGetClientPhones.Size = new System.Drawing.Size(405, 32);
             this.linkLabelGetClientPhones.TabIndex = 20;
             this.linkLabelGetClientPhones.TabStop = true;
             this.linkLabelGetClientPhones.Text = "Получить список номеров клиента";
@@ -140,10 +140,10 @@ namespace cellular
             // linkLabelChangePassport
             // 
             this.linkLabelChangePassport.AutoSize = true;
-            this.linkLabelChangePassport.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelChangePassport.Location = new System.Drawing.Point(13, 285);
+            this.linkLabelChangePassport.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelChangePassport.Location = new System.Drawing.Point(11, 247);
             this.linkLabelChangePassport.Name = "linkLabelChangePassport";
-            this.linkLabelChangePassport.Size = new System.Drawing.Size(448, 32);
+            this.linkLabelChangePassport.Size = new System.Drawing.Size(449, 32);
             this.linkLabelChangePassport.TabIndex = 21;
             this.linkLabelChangePassport.TabStop = true;
             this.linkLabelChangePassport.Text = "Обновить паспортные данные клиента";
@@ -151,9 +151,9 @@ namespace cellular
             // 
             // buttonSelectClient
             // 
-            this.buttonSelectClient.Location = new System.Drawing.Point(13, 105);
+            this.buttonSelectClient.Location = new System.Drawing.Point(11, 91);
             this.buttonSelectClient.Name = "buttonSelectClient";
-            this.buttonSelectClient.Size = new System.Drawing.Size(179, 32);
+            this.buttonSelectClient.Size = new System.Drawing.Size(153, 28);
             this.buttonSelectClient.TabIndex = 22;
             this.buttonSelectClient.Text = "Выбрать клиента";
             this.buttonSelectClient.UseVisualStyleBackColor = true;
@@ -162,8 +162,8 @@ namespace cellular
             // labelSelectedClient
             // 
             this.labelSelectedClient.AutoSize = true;
-            this.labelSelectedClient.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelSelectedClient.Location = new System.Drawing.Point(199, 131);
+            this.labelSelectedClient.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.labelSelectedClient.Location = new System.Drawing.Point(171, 114);
             this.labelSelectedClient.Name = "labelSelectedClient";
             this.labelSelectedClient.Size = new System.Drawing.Size(170, 25);
             this.labelSelectedClient.TabIndex = 23;
@@ -171,9 +171,9 @@ namespace cellular
             // 
             // buttonResetClient
             // 
-            this.buttonResetClient.Location = new System.Drawing.Point(14, 153);
+            this.buttonResetClient.Location = new System.Drawing.Point(12, 133);
             this.buttonResetClient.Name = "buttonResetClient";
-            this.buttonResetClient.Size = new System.Drawing.Size(179, 32);
+            this.buttonResetClient.Size = new System.Drawing.Size(153, 28);
             this.buttonResetClient.TabIndex = 24;
             this.buttonResetClient.Text = "Сбросить клиента";
             this.buttonResetClient.UseVisualStyleBackColor = true;
@@ -181,9 +181,9 @@ namespace cellular
             // 
             // OperatorWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 530);
+            this.ClientSize = new System.Drawing.Size(686, 459);
             this.Controls.Add(this.buttonResetClient);
             this.Controls.Add(this.labelSelectedClient);
             this.Controls.Add(this.buttonSelectClient);

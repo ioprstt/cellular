@@ -14,12 +14,14 @@ namespace cellular
     public partial class SearchClientForm : Form
     {
         private Client client;
+        ApplicationContext db;
 
         public SearchClientForm()
         {
             InitializeComponent();
             CenterToScreen();
 
+            this.db = new ApplicationContext();
             this.client = null;
         }
 
@@ -27,38 +29,43 @@ namespace cellular
         {
             if (this.radioButtonId.Checked)
             {
-                int id = (int)this.numericUpDownId.Value;
-                using (ApplicationContext db = new ApplicationContext())
+                string idText = this.textBoxId.Text;
+                if (!(new Regex(@"^\d+$").IsMatch(idText)))
                 {
-                    this.client = db.Clients.Where(r => r.Id == id).FirstOrDefault();
+                    Msg.ShowErrorMessage("Некорректный идентификатор");
+                    return;
                 }
+                int id = int.Parse(idText);
+                if (id < 0)
+                {
+                    Msg.ShowErrorMessage("Некорректный идентификатор");
+                    return;
+                }
+                this.client = db.Clients.Where(r => r.Id == id).FirstOrDefault();
             } 
             else if (this.radioButtonPassport.Checked)
             {
                 string series = this.textBoxPassportSeries.Text;
-                if (!(new Regex(@"\d{4}").IsMatch(series)))
+                if (!(new Regex(@"^\d{4}$").IsMatch(series)))
                 {
                     Msg.ShowErrorMessage("Серия паспорта должна состоять из 4-х цифр");
                     return;
                 }
 
                 string num = this.textBoxPassportNum.Text;
-                if (!(new Regex(@"\d{6}").IsMatch(series)))
+                if (!(new Regex(@"^\d{6}$").IsMatch(num)))
                 {
-                    Msg.ShowErrorMessage("Номер паспорта должн состоять из 6-х цифр");
+                    Msg.ShowErrorMessage("Номер паспорта должн состоять из 6 цифр");
                     return;
                 }
 
-                using (ApplicationContext db = new ApplicationContext())
+                Passport passport = db.Passports.Where(r => r.Series == series && r.Num == num).FirstOrDefault();
+                if (passport is null)
                 {
-                    Passport passport = db.Passports.Where(r => r.Series == series && r.Num == num).FirstOrDefault();
-                    if (passport is null)
-                    {
-                        Msg.ShowErrorMessage($"Паспорт {series} {num} не найден.");
-                        return;
-                    }
-                    this.client = passport.Client;
+                    Msg.ShowErrorMessage($"Паспорт {series} {num} не найден.");
+                    return;
                 }
+                this.client = db.GetClientByPassport(passport);
             } 
             else
             {
@@ -73,13 +80,9 @@ namespace cellular
                     Msg.ShowErrorMessage($"Некорректный номер телефона.\n{exc.Message}");
                     return;
                 }
-                PhoneNumber phone;
-                using (ApplicationContext db = new ApplicationContext())
-                {
-                    phone = db.PhoneNumbers.Where(r => r.Num == validPhone).FirstOrDefault();
-                }
+                PhoneNumber phone = db.PhoneNumbers.Where(r => r.Num == validPhone).FirstOrDefault();
 
-                if (phone is not null)
+                if (phone != null)
                     this.client = phone.Client;
             }
 

@@ -22,7 +22,6 @@ namespace cellular
         {
             ApplicationContext db = new ApplicationContext();
             string login = textBoxLogin.Text;
-            string password = textBoxPassword.Text;
             Client client = null;
 
             string validPhone;
@@ -32,12 +31,12 @@ namespace cellular
             }
             catch (ValidatePhoneException exc)
             {
-                Msg.ShowErrorMessage($"Некорректный идентификатор.\n{exc.Message}");
+                Msg.ShowErrorMessage($"Некорректный номер.\n{exc.Message}");
                 return;
             }
             PhoneNumber phone = db.PhoneNumbers.Where(r => r.Num == validPhone).FirstOrDefault();
 
-            if (phone is not null)
+            if (phone != null)
                 FormRunner.RunForm(this, new UserWindow(phone));
             else
                 Msg.ShowErrorMessage("Клиент не найден");

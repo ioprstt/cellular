@@ -134,19 +134,18 @@ namespace cellular
     public class UserManager
     {
         private int clientId;
+        ApplicationContext db;
 
         public UserManager(int clientId)
         {
             this.clientId = clientId;
+            this.db = new ApplicationContext();
         }
 
         private Client GetClient()
         {
             Client client;
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                client = db.Clients.Where(r => r.Id == this.clientId).FirstOrDefault();
-            }
+            client = db.Clients.Where(r => r.Id == this.clientId).FirstOrDefault();
             if (client is null)
                 throw new DbSearchException($"Клиент {this.clientId} не найден");
             return client;
@@ -171,33 +170,32 @@ namespace cellular
             return client.Passport.DateOfBirth;
         }
 
-        public IQueryable<Call> GetOutgoingCalls(string phoneNumber, ApplicationContext db)
+        public IQueryable<Call> GetOutgoingCalls(string phoneNumber)
         {
-            return db.Calls.Where(p => p.OutgoingPhoneNumber.Num == phoneNumber);
+            return this.db.Calls.Where(p => p.OutgoingPhoneNumber.Num == phoneNumber);
         }
 
-        public IQueryable<Call> GetIncomingCalls(string phoneNumber, ApplicationContext db)
+        public IQueryable<Call> GetIncomingCalls(string phoneNumber)
         {
-            return db.Calls.Where(p => p.IncomingPhoneNumber.Num == phoneNumber);
+            return this.db.Calls.Where(p => p.IncomingPhoneNumber.Num == phoneNumber);
         }
     }
 
     public class PassportManager
     {
         private int passportId;
+        private ApplicationContext db;
 
         public PassportManager(int passportId)
         {
             this.passportId = passportId;
+            this.db = new ApplicationContext();
         }
 
         private Passport GetPassport()
         {
             Passport passport;
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                passport = db.Passports.Where(r => r.Id == this.passportId).FirstOrDefault();
-            }
+            passport = this.db.Passports.Where(r => r.Id == this.passportId).FirstOrDefault();
             if (passport is null)
                 throw new DbSearchException($"Паспорт {this.passportId} не найден");
             return passport;
@@ -207,7 +205,7 @@ namespace cellular
         {
             Passport passport = this.GetPassport();
             string fullName = $"{passport.Surname} {passport.Name}";
-            if (passport.Patronymic is not null)
+            if (passport.Patronymic != null)
                 fullName = $"{fullName} {passport.Patronymic}";
             return fullName;
         }

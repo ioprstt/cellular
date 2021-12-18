@@ -36,10 +36,10 @@ namespace cellular
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLogin.Location = new System.Drawing.Point(107, 96);
+            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.buttonLogin.Location = new System.Drawing.Point(92, 85);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(181, 32);
+            this.buttonLogin.Size = new System.Drawing.Size(155, 34);
             this.buttonLogin.TabIndex = 24;
             this.buttonLogin.Text = "Войти";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -47,10 +47,9 @@ namespace cellular
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(65, 55);
+            this.textBoxPassword.Location = new System.Drawing.Point(56, 48);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PlaceholderText = "Пароль";
-            this.textBoxPassword.Size = new System.Drawing.Size(246, 23);
+            this.textBoxPassword.Size = new System.Drawing.Size(211, 20);
             this.textBoxPassword.TabIndex = 23;
             this.textBoxPassword.Text = "operator";
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -59,19 +58,19 @@ namespace cellular
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(42, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.label1.Location = new System.Drawing.Point(36, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(306, 32);
+            this.label1.Size = new System.Drawing.Size(307, 32);
             this.label1.TabIndex = 22;
             this.label1.Text = "Вход в кабинет оператора";
             // 
             // OperatorAuth
             // 
             this.AcceptButton = this.buttonLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 143);
+            this.ClientSize = new System.Drawing.Size(343, 131);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label1);
