@@ -35,7 +35,10 @@ namespace cellular
                 */
             }
 
+<<<<<<< HEAD
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
+=======
+>>>>>>> acb11c1 (ef6 and net472)
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Authorization());

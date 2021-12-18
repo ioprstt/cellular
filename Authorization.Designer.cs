@@ -39,10 +39,17 @@ namespace cellular
             // label1
             // 
             this.label1.AutoSize = true;
+<<<<<<< HEAD
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(37, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 32);
+=======
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.label1.Location = new System.Drawing.Point(32, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 32);
+>>>>>>> acb11c1 (ef6 and net472)
             this.label1.TabIndex = 0;
             this.label1.Text = "Вход в систему";
             // 
@@ -50,9 +57,15 @@ namespace cellular
             // 
             this.radioButtonUser.AutoSize = true;
             this.radioButtonUser.Checked = true;
+<<<<<<< HEAD
             this.radioButtonUser.Location = new System.Drawing.Point(78, 62);
             this.radioButtonUser.Name = "radioButtonUser";
             this.radioButtonUser.Size = new System.Drawing.Size(102, 19);
+=======
+            this.radioButtonUser.Location = new System.Drawing.Point(67, 54);
+            this.radioButtonUser.Name = "radioButtonUser";
+            this.radioButtonUser.Size = new System.Drawing.Size(98, 17);
+>>>>>>> acb11c1 (ef6 and net472)
             this.radioButtonUser.TabIndex = 3;
             this.radioButtonUser.TabStop = true;
             this.radioButtonUser.Text = "Пользователь";
@@ -61,9 +74,15 @@ namespace cellular
             // radioButtonAdmin
             // 
             this.radioButtonAdmin.AutoSize = true;
+<<<<<<< HEAD
             this.radioButtonAdmin.Location = new System.Drawing.Point(78, 148);
             this.radioButtonAdmin.Name = "radioButtonAdmin";
             this.radioButtonAdmin.Size = new System.Drawing.Size(112, 19);
+=======
+            this.radioButtonAdmin.Location = new System.Drawing.Point(67, 128);
+            this.radioButtonAdmin.Name = "radioButtonAdmin";
+            this.radioButtonAdmin.Size = new System.Drawing.Size(104, 17);
+>>>>>>> acb11c1 (ef6 and net472)
             this.radioButtonAdmin.TabIndex = 4;
             this.radioButtonAdmin.TabStop = true;
             this.radioButtonAdmin.Text = "Администратор";
@@ -71,10 +90,17 @@ namespace cellular
             // 
             // buttonLogin
             // 
+<<<<<<< HEAD
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonLogin.Location = new System.Drawing.Point(37, 189);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(181, 32);
+=======
+            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.buttonLogin.Location = new System.Drawing.Point(32, 164);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(155, 34);
+>>>>>>> acb11c1 (ef6 and net472)
             this.buttonLogin.TabIndex = 5;
             this.buttonLogin.Text = "Продолжить";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -83,9 +109,15 @@ namespace cellular
             // radioButtonOperator
             // 
             this.radioButtonOperator.AutoSize = true;
+<<<<<<< HEAD
             this.radioButtonOperator.Location = new System.Drawing.Point(78, 103);
             this.radioButtonOperator.Name = "radioButtonOperator";
             this.radioButtonOperator.Size = new System.Drawing.Size(79, 19);
+=======
+            this.radioButtonOperator.Location = new System.Drawing.Point(67, 89);
+            this.radioButtonOperator.Name = "radioButtonOperator";
+            this.radioButtonOperator.Size = new System.Drawing.Size(74, 17);
+>>>>>>> acb11c1 (ef6 and net472)
             this.radioButtonOperator.TabIndex = 6;
             this.radioButtonOperator.TabStop = true;
             this.radioButtonOperator.Text = "Оператор";
@@ -94,9 +126,15 @@ namespace cellular
             // Authorization
             // 
             this.AcceptButton = this.buttonLogin;
+<<<<<<< HEAD
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(266, 242);
+=======
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(228, 210);
+>>>>>>> acb11c1 (ef6 and net472)
             this.Controls.Add(this.radioButtonOperator);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.radioButtonAdmin);

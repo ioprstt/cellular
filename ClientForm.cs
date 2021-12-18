@@ -13,12 +13,21 @@ namespace cellular
     public partial class ClientForm : Form
     {
         Dictionary<int, string> passportsInfo;
+<<<<<<< HEAD
+=======
+        private ApplicationContext db;
+>>>>>>> acb11c1 (ef6 and net472)
 
         public ClientForm(Dictionary<int, string> passportsInfo)
         {
             InitializeComponent();
             CenterToScreen();
 
+<<<<<<< HEAD
+=======
+            this.db = new ApplicationContext();
+
+>>>>>>> acb11c1 (ef6 and net472)
             this.passportsInfo = passportsInfo;
             this.InitComboBoxClientFormPassports();
         }
@@ -38,6 +47,7 @@ namespace cellular
 
         private void linkLabelAddPassport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+<<<<<<< HEAD
             using (PassportForm form = new PassportForm())
             {
                 form.ShowDialog();
@@ -50,12 +60,30 @@ namespace cellular
                     InitComboBoxClientFormPassports();
                     this.comboBoxClientFormPassports.SelectedIndex = this.comboBoxClientFormPassports.Items.Count - 1;
                 }
+=======
+            PassportForm form = new PassportForm();
+            form.ShowDialog();
+            // если добавили паспорт, то обновляем комбобокс и выбираем последний добавленный элемент
+            if (form.DialogResult == DialogResult.OK)
+            {
+                Passport passport = form.GetPassport();
+                db.Passports.Add(passport);
+                db.SaveChanges();
+
+                PassportManager passportManager = new PassportManager(passport.Id);
+                Msg.ShowInfoMessage($"Паспорт {passportManager.GetFullPassport()} успешно создан.");
+                
+                this.passportsInfo.Add(passport.Id, passportManager.GetNameAndPassport());
+                InitComboBoxClientFormPassports();
+                this.comboBoxClientFormPassports.SelectedIndex = this.comboBoxClientFormPassports.Items.Count - 1;
+>>>>>>> acb11c1 (ef6 and net472)
             }
         }
 
         private void buttonClientOK_Click(object sender, EventArgs e)
         {
             int passportId = (int)this.comboBoxClientFormPassports.SelectedValue;
+<<<<<<< HEAD
 
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -67,6 +95,28 @@ namespace cellular
                 db.SaveChanges();
                 Msg.ShowInfoMessage($"Клиент с идентификатором {client.Id} успешно создан.");
             }
+=======
+            Client client = db.Clients.Where(r => r.PassportId == passportId).FirstOrDefault();
+            if (client != null)
+            {
+                Msg.ShowErrorMessage("Клиент для выбранного паспорта уже существует");
+                return;
+            }
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        public Client GetClient()
+        {
+            int passportId = (int)this.comboBoxClientFormPassports.SelectedValue;
+
+            Client client = new Client
+            {
+                PassportId = passportId
+            };
+            return client;
+>>>>>>> acb11c1 (ef6 and net472)
         }
     }
 }

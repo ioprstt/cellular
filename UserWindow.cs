@@ -40,6 +40,7 @@ namespace cellular
 
         private void UpdateCalls()
         {
+<<<<<<< HEAD
             using (ApplicationContext db = new ApplicationContext())
             {
                 IQueryable<Call> outgoing = userManager.GetOutgoingCalls(phoneNumber, db);
@@ -52,6 +53,17 @@ namespace cellular
                     p => new { p.StartTime, OutgoingPhoneNumber = p.OutgoingPhoneNumber.Num, Duration = p.EndTime.Subtract(p.StartTime) });
                 dataGridViewIncoming.DataSource = result.ToList();
             }
+=======
+            IQueryable<Call> outgoing = userManager.GetOutgoingCalls(phoneNumber);
+            var result = outgoing.Select(
+                p => new { p.StartTime, OutgoingPhoneNumber = p.OutgoingPhoneNumber.Num, Duration = p.EndTime.Subtract(p.StartTime) });
+            dataGridViewOutgoing.DataSource = result.ToList();
+
+            IQueryable<Call> incoming = userManager.GetIncomingCalls(phoneNumber);
+            result = incoming.Select(
+                p => new { p.StartTime, OutgoingPhoneNumber = p.OutgoingPhoneNumber.Num, Duration = p.EndTime.Subtract(p.StartTime) });
+            dataGridViewIncoming.DataSource = result.ToList();
+>>>>>>> acb11c1 (ef6 and net472)
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)

@@ -13,16 +13,34 @@ namespace cellular
 {
     public partial class PassportForm : Form
     {
+<<<<<<< HEAD
         private bool create;
         private Passport currentPassport;
 
         public PassportForm(bool create = true)
+=======
+        ApplicationContext db;
+        Passport initPassport;
+
+        public PassportForm(Passport passport = null, bool readonly_ = false)
+>>>>>>> acb11c1 (ef6 and net472)
         {
             InitializeComponent();
             CenterToScreen();
 
+<<<<<<< HEAD
             this.create = create;
             this.currentPassport = null;
+=======
+            db = new ApplicationContext();
+            initPassport = passport;
+
+            if (passport != null)
+                InitValues(passport);
+
+            if (readonly_)
+                SetReadonly();
+>>>>>>> acb11c1 (ef6 and net472)
         }
 
         public string GetSeries() { return textBoxSeries.Text; }
@@ -35,6 +53,40 @@ namespace cellular
         public DateTime GetDateOfBirth() { return dateTimePickerDateOfBirth.Value.Date; }
         public string GetAddress() { return textBoxAddress.Text; }
 
+<<<<<<< HEAD
+=======
+        private void InitValues(Passport passport)
+        {
+            textBoxSeries.Text = passport.Series;
+            textBoxNum.Text = passport.Num;
+            dateTimePickerDateOfIssue.Value = passport.DateOfIssue;
+            textBoxIssuingAuthority.Text = passport.IssuingAuthority;
+            textBoxSurname.Text = passport.Surname;
+            textBoxName.Text = passport.Name;
+            textBoxPatronymic.Text = passport.Patronymic;
+            dateTimePickerDateOfBirth.Value = passport.DateOfBirth;
+            textBoxAddress.Text = passport.Address;
+        }
+
+        private void SetReadonly()
+        {
+            textBoxSeries.ReadOnly = true;
+            textBoxNum.ReadOnly = true;
+            textBoxIssuingAuthority.ReadOnly = true;
+            textBoxSurname.ReadOnly = true;
+            textBoxName.ReadOnly = true;
+            textBoxPatronymic.ReadOnly = true;
+            textBoxAddress.ReadOnly = true;
+
+            // пикер не имеет свойство ReadOnly => перхватываем событие изменения даты и откатываем его
+            DateTime dateOfIssue = dateTimePickerDateOfIssue.Value;
+            dateTimePickerDateOfIssue.ValueChanged += (s, args) => dateTimePickerDateOfIssue.Value = dateOfIssue;
+
+            DateTime dateOfBirth = dateTimePickerDateOfBirth.Value;
+            dateTimePickerDateOfBirth.ValueChanged += (s, args) => dateTimePickerDateOfBirth.Value = dateOfBirth;
+        }
+
+>>>>>>> acb11c1 (ef6 and net472)
         public bool Validate()
         {
             ValidateSeries();
@@ -46,6 +98,22 @@ namespace cellular
             ValidateDateOfBirth();
             ValidateAddress();
 
+<<<<<<< HEAD
+=======
+            string series = this.GetSeries();
+            string num = this.GetNum();
+            // Проверяем повторение паспорта только если серия и номер не совпадает с паспортом из инициализации
+            if (series != this.initPassport.Series || num != this.initPassport.Num)
+            {
+                Passport passport = db.Passports.Where(r => r.Series == series && r.Num == num).FirstOrDefault();
+                if (passport != null)
+                {
+                    Msg.ShowErrorMessage($"Паспорт {this.GetSeries()} {this.GetNum()} уже существует!");
+                    return false;
+                }
+            }
+
+>>>>>>> acb11c1 (ef6 and net472)
             Dictionary<ErrorProvider, Control> items = new Dictionary<ErrorProvider, Control> 
             {
                 { errorProviderSeries, textBoxSeries },
@@ -126,6 +194,7 @@ namespace cellular
 
         private void buttonPassprtOK_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             if (this.create)
             {
                 if (this.Validate())
@@ -158,12 +227,35 @@ namespace cellular
             {
 
             }
+=======
+            if (!(this.Validate()))
+                return;
+
+>>>>>>> acb11c1 (ef6 and net472)
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
+<<<<<<< HEAD
         public Passport GetCurrentPassport() { 
             return this.currentPassport; 
+=======
+        public Passport GetPassport()
+        {
+            Passport passport = new Passport
+            {
+                Series = this.GetSeries(),
+                Num = this.GetNum(),
+                DateOfIssue = this.GetDateOfIssue(),
+                IssuingAuthority = this.GetIssuingAuthority(),
+                Surname = this.GetSurname(),
+                Name = this.GetName(),
+                Patronymic = string.IsNullOrEmpty(this.GetPatronymic()) ? null : this.GetPatronymic(),
+                DateOfBirth = this.GetDateOfBirth(),
+                Address = this.GetAddress()
+            };
+            return passport;
+>>>>>>> acb11c1 (ef6 and net472)
         }
     }
 }
