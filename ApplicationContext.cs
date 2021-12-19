@@ -186,6 +186,14 @@ CREATE UNIQUE INDEX `IX_Passport_SeriesAndNum` ON `Passports` (`Series`, `Num`);
 CREATE UNIQUE INDEX `IX_Tariffs_Name` ON `Tariffs` (`Name`);
 
 CREATE UNIQUE INDEX `IX_PhoneNumber_Num` ON `PhoneNumbers` (`Num`);
+
+CREATE FUNCTION `DiffMinutes`(timeValue1 datetime, timevalue2 datetime) 
+RETURNS int(11) DETERMINISTIC
+RETURN TIMESTAMPDIFF(MINUTE, timeValue1, timevalue2);
+
+CREATE FUNCTION `DiffSeconds`(timeValue1 datetime, timevalue2 datetime) 
+RETURNS int(11) DETERMINISTIC
+RETURN TIMESTAMPDIFF(SECOND, timeValue1, timevalue2);
 ");
             }
         }

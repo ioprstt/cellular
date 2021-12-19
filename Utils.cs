@@ -169,16 +169,6 @@ namespace cellular
             Client client = GetClient();
             return client.Passport.DateOfBirth;
         }
-
-        public IQueryable<Call> GetOutgoingCalls(string phoneNumber)
-        {
-            return this.db.Calls.Where(p => p.OutgoingPhoneNumber.Num == phoneNumber);
-        }
-
-        public IQueryable<Call> GetIncomingCalls(string phoneNumber)
-        {
-            return this.db.Calls.Where(p => p.IncomingPhoneNumber.Num == phoneNumber);
-        }
     }
 
     public class PassportManager

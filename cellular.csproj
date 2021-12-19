@@ -122,6 +122,12 @@
     <Compile Include="Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="CallsForPhoneNumberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CallsForPhoneNumberForm.Designer.cs">
+      <DependentUpon>CallsForPhoneNumberForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CallsForPhoneNumberForm.resx">
+      <DependentUpon>CallsForPhoneNumberForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateClientForm.resx">
       <DependentUpon>CreateClientForm.cs</DependentUpon>

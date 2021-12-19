@@ -14,13 +14,14 @@ namespace cellular
     {
         private string phoneNumber;
         private UserManager userManager;
+        private ApplicationContext db;
 
         public UserWindow(PhoneNumber phone)
         {
             InitializeComponent();
             CenterToScreen();
-            dataGridViewOutgoing.AutoGenerateColumns = false;
-            dataGridViewIncoming.AutoGenerateColumns = false;
+
+            this.db = new ApplicationContext();
 
             phoneNumber = phone.Num;
 
@@ -28,8 +29,7 @@ namespace cellular
 
             labelGreeting.Text = $"Добро пожаловать, {userManager.GetFullName()}";
             labelPhone.Text = $"Номер телефона: {phone}";
-
-            UpdateCalls();
+            labelTariff.Text = $"Тариф: {phone.Tariff.Name}";
         }
 
         private void UserWindow_Shown(object sender, EventArgs e)
@@ -40,6 +40,7 @@ namespace cellular
 
         private void UpdateCalls()
         {
+            /*
             IQueryable<Call> outgoing = userManager.GetOutgoingCalls(phoneNumber);
             var result = outgoing.Select(
                 p => new { p.StartTime, OutgoingPhoneNumber = p.OutgoingPhoneNumber.Num, Duration = p.EndTime.Subtract(p.StartTime) });
@@ -49,11 +50,19 @@ namespace cellular
             result = incoming.Select(
                 p => new { p.StartTime, OutgoingPhoneNumber = p.OutgoingPhoneNumber.Num, Duration = p.EndTime.Subtract(p.StartTime) });
             dataGridViewIncoming.DataSource = result.ToList();
+            */
         }
 
-        private void buttonUpdate_Click(object sender, EventArgs e)
+        private void linkLabelShowCalls_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            UpdateCalls();
+            PhoneNumber phoneNumber = this.db.PhoneNumbers.Where(r => r.Num == this.phoneNumber).First();
+            CallsForPhoneNumberForm form = new CallsForPhoneNumberForm(phoneNumber);
+            form.ShowDialog();
+        }
+
+        private void linkLabelShowPrice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

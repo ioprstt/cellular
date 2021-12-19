@@ -55,6 +55,7 @@ namespace cellular
             // 
             // buttonLogin
             // 
+            this.buttonLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.buttonLogin.Location = new System.Drawing.Point(84, 129);
             this.buttonLogin.Name = "buttonLogin";
