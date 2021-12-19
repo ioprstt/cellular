@@ -38,21 +38,6 @@ namespace cellular
                 Msg.ShowInfoMessage($"Дорогой {userManager.GetFullName()}, поздравляем Вас с днём рождения!");
         }
 
-        private void UpdateCalls()
-        {
-            /*
-            IQueryable<Call> outgoing = userManager.GetOutgoingCalls(phoneNumber);
-            var result = outgoing.Select(
-                p => new { p.StartTime, OutgoingPhoneNumber = p.OutgoingPhoneNumber.Num, Duration = p.EndTime.Subtract(p.StartTime) });
-            dataGridViewOutgoing.DataSource = result.ToList();
-
-            IQueryable<Call> incoming = userManager.GetIncomingCalls(phoneNumber);
-            result = incoming.Select(
-                p => new { p.StartTime, OutgoingPhoneNumber = p.OutgoingPhoneNumber.Num, Duration = p.EndTime.Subtract(p.StartTime) });
-            dataGridViewIncoming.DataSource = result.ToList();
-            */
-        }
-
         private void linkLabelShowCalls_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             PhoneNumber phoneNumber = this.db.PhoneNumbers.Where(r => r.Num == this.phoneNumber).First();

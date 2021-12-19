@@ -163,6 +163,17 @@ namespace cellular
         private void linkLabelGetCalls_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!(this.CheckSelectedClient())) { return; }
+
+            // Выбрать номер для которого показать
+            PhoneNumberForClientForm form = new PhoneNumberForClientForm(this.selectedClient);
+            form.ShowDialog();
+            if (form.DialogResult != DialogResult.OK)
+                return;
+            PhoneNumber phoneNumber = form.GetPhoneNumber();
+
+            // Показать информацию
+            CallsForPhoneNumberForm callsForPhoneNumberForm = new CallsForPhoneNumberForm(phoneNumber);
+            callsForPhoneNumberForm.ShowDialog();
         }
 
         private void linkLabelPrice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
