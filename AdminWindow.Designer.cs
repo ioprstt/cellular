@@ -63,7 +63,7 @@ namespace cellular
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAdminUpdate = new System.Windows.Forms.Button();
             this.tabPageTariff = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTariff = new System.Windows.Forms.DataGridView();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,7 +77,7 @@ namespace cellular
             this.tabPageCall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCall)).BeginInit();
             this.tabPageTariff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -377,7 +377,7 @@ namespace cellular
             // 
             // tabPageTariff
             // 
-            this.tabPageTariff.Controls.Add(this.dataGridView1);
+            this.tabPageTariff.Controls.Add(this.dgvTariff);
             this.tabPageTariff.Location = new System.Drawing.Point(4, 22);
             this.tabPageTariff.Name = "tabPageTariff";
             this.tabPageTariff.Size = new System.Drawing.Size(656, 222);
@@ -385,18 +385,18 @@ namespace cellular
             this.tabPageTariff.Text = "Тариф";
             this.tabPageTariff.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvTariff
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvTariff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTariff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column21,
             this.Column22,
             this.Column23});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(656, 222);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvTariff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTariff.Location = new System.Drawing.Point(0, 0);
+            this.dgvTariff.Name = "dgvTariff";
+            this.dgvTariff.Size = new System.Drawing.Size(656, 222);
+            this.dgvTariff.TabIndex = 0;
             // 
             // Column21
             // 
@@ -444,7 +444,7 @@ namespace cellular
             this.tabPageCall.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCall)).EndInit();
             this.tabPageTariff.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -485,7 +485,7 @@ namespace cellular
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.TabPage tabPageTariff;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTariff;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;

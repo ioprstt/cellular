@@ -19,6 +19,8 @@ namespace cellular
 
             this.dgvAdminPassport.AutoGenerateColumns = false;
             this.dgvAdminClient.AutoGenerateColumns = false;
+            this.dgvAdminClient.AutoGenerateColumns = false;
+            this.dgvTariff.AutoGenerateColumns = false;
             this.dgvAdminPhoneNumber.AutoGenerateColumns = false;
             this.dgvAdminCall.AutoGenerateColumns = false;
 
@@ -31,6 +33,7 @@ namespace cellular
             {
                 this.dgvAdminPassport.DataSource = db.Passports.ToList();
                 this.dgvAdminClient.DataSource = db.Clients.ToList();
+                this.dgvTariff.DataSource = db.Tariffs.ToList();
                 this.dgvAdminPhoneNumber.DataSource = db.PhoneNumbers.ToList();
                 this.dgvAdminCall.DataSource = db.Calls.ToList();
             }

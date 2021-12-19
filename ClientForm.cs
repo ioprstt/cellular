@@ -12,26 +12,41 @@ namespace cellular
 {
     public partial class ClientForm : Form
     {
-        Dictionary<int, string> passportsInfo;
         private ApplicationContext db;
+        Client initClient;
 
-        public ClientForm(Dictionary<int, string> passportsInfo)
+        public ClientForm(Client client = null)
         {
             InitializeComponent();
             CenterToScreen();
 
+            this.initClient = client;
+            if (client != null)
+                this.InitValues(client);
+
             this.db = new ApplicationContext();
 
-            this.passportsInfo = passportsInfo;
+            this.InitWidgets();
+        }
+
+        private void InitValues(Client client)
+        {
+            this.comboBoxClientFormPassports.SelectedValue = client.Id;
+        }
+
+        private void InitWidgets()
+        {
             this.InitComboBoxClientFormPassports();
         }
 
         private void InitComboBoxClientFormPassports()
         {
             List<ComboBoxItem> comboBoxItems = new List<ComboBoxItem>();
-            foreach (var info in this.passportsInfo)
+            IList<Passport> passports = this.db.Passports.ToList();
+            foreach (Passport passport in passports)
             {
-                ComboBoxItem item = new ComboBoxItem(info.Key, info.Value);
+                PassportManager manager = new PassportManager(passport.Id);
+                ComboBoxItem item = new ComboBoxItem(passport.Id, manager.GetNameAndPassport());
                 comboBoxItems.Add(item);
             }
             this.comboBoxClientFormPassports.DataSource = comboBoxItems;
@@ -53,21 +68,40 @@ namespace cellular
                 PassportManager passportManager = new PassportManager(passport.Id);
                 Msg.ShowInfoMessage($"Паспорт {passportManager.GetFullPassport()} успешно создан.");
                 
-                this.passportsInfo.Add(passport.Id, passportManager.GetNameAndPassport());
                 InitComboBoxClientFormPassports();
                 this.comboBoxClientFormPassports.SelectedIndex = this.comboBoxClientFormPassports.Items.Count - 1;
             }
         }
 
-        private void buttonClientOK_Click(object sender, EventArgs e)
+        private bool Validate()
+        {
+            this.ValidatePassport();
+
+            Dictionary<ErrorProvider, Control> items = new Dictionary<ErrorProvider, Control>
+            {
+                { errorProviderPassport, comboBoxClientFormPassports },
+            };
+            foreach (var item in items)
+                if (item.Key.GetError(item.Value) != string.Empty)
+                    return false;
+
+            return true;
+        }
+
+        private void ValidatePassport()
         {
             int passportId = (int)this.comboBoxClientFormPassports.SelectedValue;
             Client client = db.Clients.Where(r => r.PassportId == passportId).FirstOrDefault();
             if (client != null)
-            {
-                Msg.ShowErrorMessage("Клиент для выбранного паспорта уже существует");
+                this.errorProviderPassport.SetError(comboBoxClientFormPassports, "Клиент для выбранного паспорта уже существует.");
+            else
+                this.errorProviderPassport.SetError(comboBoxClientFormPassports, string.Empty);
+        }
+
+        private void buttonClientOK_Click(object sender, EventArgs e)
+        {
+            if (!(this.Validate()))
                 return;
-            }
 
             this.DialogResult = DialogResult.OK;
             this.Close();

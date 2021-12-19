@@ -128,11 +128,11 @@
     <Compile Include="CallsForPhoneNumberForm.Designer.cs">
       <DependentUpon>CallsForPhoneNumberForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateClientForm.cs">
+    <Compile Include="ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateClientForm.Designer.cs">
-      <DependentUpon>CreateClientForm.cs</DependentUpon>
+    <Compile Include="ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OperatorAuth.cs">
       <SubType>Form</SubType>
@@ -178,6 +178,12 @@
     <Compile Include="SelectTariffForm.Designer.cs">
       <DependentUpon>SelectTariffForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TariffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TariffForm.Designer.cs">
+      <DependentUpon>TariffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAuth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,8 +209,8 @@
     <EmbeddedResource Include="CallsForPhoneNumberForm.resx">
       <DependentUpon>CallsForPhoneNumberForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateClientForm.resx">
-      <DependentUpon>CreateClientForm.cs</DependentUpon>
+    <EmbeddedResource Include="ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OperatorAuth.resx">
       <DependentUpon>OperatorAuth.cs</DependentUpon>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelectTariffForm.resx">
       <DependentUpon>SelectTariffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TariffForm.resx">
+      <DependentUpon>TariffForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAuth.resx">
       <DependentUpon>UserAuth.cs</DependentUpon>
