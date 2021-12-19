@@ -37,7 +37,7 @@ namespace cellular
             // buttonLogin
             // 
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.buttonLogin.Location = new System.Drawing.Point(92, 85);
+            this.buttonLogin.Location = new System.Drawing.Point(91, 85);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(155, 34);
             this.buttonLogin.TabIndex = 24;
@@ -47,7 +47,7 @@ namespace cellular
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(56, 48);
+            this.textBoxPassword.Location = new System.Drawing.Point(63, 48);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(211, 20);
             this.textBoxPassword.TabIndex = 23;
@@ -58,7 +58,7 @@ namespace cellular
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.label1.Location = new System.Drawing.Point(36, 8);
+            this.label1.Location = new System.Drawing.Point(20, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(307, 32);
             this.label1.TabIndex = 22;

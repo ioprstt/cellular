@@ -62,6 +62,11 @@ namespace cellular
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAdminUpdate = new System.Windows.Forms.Button();
+            this.tabPageTariff = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlAdmin.SuspendLayout();
             this.tabPagePassport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPassport)).BeginInit();
@@ -71,6 +76,8 @@ namespace cellular
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPhoneNumber)).BeginInit();
             this.tabPageCall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCall)).BeginInit();
+            this.tabPageTariff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -104,6 +111,7 @@ namespace cellular
             // 
             this.tabControlAdmin.Controls.Add(this.tabPagePassport);
             this.tabControlAdmin.Controls.Add(this.tabPageClient);
+            this.tabControlAdmin.Controls.Add(this.tabPageTariff);
             this.tabControlAdmin.Controls.Add(this.tabPagePhoneNumber);
             this.tabControlAdmin.Controls.Add(this.tabPageCall);
             this.tabControlAdmin.Location = new System.Drawing.Point(11, 11);
@@ -135,10 +143,11 @@ namespace cellular
             this.Column7,
             this.Column8,
             this.Column9});
-            this.dgvAdminPassport.Location = new System.Drawing.Point(3, 3);
+            this.dgvAdminPassport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAdminPassport.Location = new System.Drawing.Point(0, 0);
             this.dgvAdminPassport.Name = "dgvAdminPassport";
             this.dgvAdminPassport.RowTemplate.Height = 25;
-            this.dgvAdminPassport.Size = new System.Drawing.Size(652, 218);
+            this.dgvAdminPassport.Size = new System.Drawing.Size(656, 222);
             this.dgvAdminPassport.TabIndex = 0;
             // 
             // Column1
@@ -221,10 +230,11 @@ namespace cellular
             this.dgvAdminClient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
             this.Column11});
+            this.dgvAdminClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAdminClient.Location = new System.Drawing.Point(3, 3);
             this.dgvAdminClient.Name = "dgvAdminClient";
             this.dgvAdminClient.RowTemplate.Height = 25;
-            this.dgvAdminClient.Size = new System.Drawing.Size(652, 218);
+            this.dgvAdminClient.Size = new System.Drawing.Size(650, 216);
             this.dgvAdminClient.TabIndex = 0;
             // 
             // Column10
@@ -259,10 +269,11 @@ namespace cellular
             this.Column13,
             this.Column14,
             this.Column15});
-            this.dgvAdminPhoneNumber.Location = new System.Drawing.Point(3, 3);
+            this.dgvAdminPhoneNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAdminPhoneNumber.Location = new System.Drawing.Point(0, 0);
             this.dgvAdminPhoneNumber.Name = "dgvAdminPhoneNumber";
             this.dgvAdminPhoneNumber.RowTemplate.Height = 25;
-            this.dgvAdminPhoneNumber.Size = new System.Drawing.Size(652, 218);
+            this.dgvAdminPhoneNumber.Size = new System.Drawing.Size(656, 222);
             this.dgvAdminPhoneNumber.TabIndex = 0;
             // 
             // Column12
@@ -312,10 +323,11 @@ namespace cellular
             this.Column18,
             this.Column19,
             this.Column20});
-            this.dgvAdminCall.Location = new System.Drawing.Point(3, 3);
+            this.dgvAdminCall.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAdminCall.Location = new System.Drawing.Point(0, 0);
             this.dgvAdminCall.Name = "dgvAdminCall";
             this.dgvAdminCall.RowTemplate.Height = 25;
-            this.dgvAdminCall.Size = new System.Drawing.Size(652, 218);
+            this.dgvAdminCall.Size = new System.Drawing.Size(656, 222);
             this.dgvAdminCall.TabIndex = 0;
             // 
             // Column16
@@ -363,6 +375,53 @@ namespace cellular
             this.buttonAdminUpdate.UseVisualStyleBackColor = true;
             this.buttonAdminUpdate.Click += new System.EventHandler(this.buttonAdminUpdate_Click);
             // 
+            // tabPageTariff
+            // 
+            this.tabPageTariff.Controls.Add(this.dataGridView1);
+            this.tabPageTariff.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTariff.Name = "tabPageTariff";
+            this.tabPageTariff.Size = new System.Drawing.Size(656, 222);
+            this.tabPageTariff.TabIndex = 5;
+            this.tabPageTariff.Text = "Тариф";
+            this.tabPageTariff.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column21,
+            this.Column22,
+            this.Column23});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(656, 222);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "Id";
+            this.Column21.Frozen = true;
+            this.Column21.HeaderText = "ID";
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "Name";
+            this.Column22.Frozen = true;
+            this.Column22.HeaderText = "Название";
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "Price";
+            this.Column23.Frozen = true;
+            this.Column23.HeaderText = "Цена (руб. за мин.)";
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,6 +443,8 @@ namespace cellular
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPhoneNumber)).EndInit();
             this.tabPageCall.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCall)).EndInit();
+            this.tabPageTariff.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -423,5 +484,10 @@ namespace cellular
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.TabPage tabPageTariff;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
     }
 }
