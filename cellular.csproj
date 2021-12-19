@@ -158,6 +158,12 @@
     <Compile Include="PhoneNumberForClientForm.Designer.cs">
       <DependentUpon>PhoneNumberForClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PriceForPhoneNumberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PriceForPhoneNumberForm.Designer.cs">
+      <DependentUpon>PriceForPhoneNumberForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchClientForm.cs">
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PhoneNumberForClientForm.resx">
       <DependentUpon>PhoneNumberForClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PriceForPhoneNumberForm.resx">
+      <DependentUpon>PriceForPhoneNumberForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

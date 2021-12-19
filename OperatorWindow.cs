@@ -140,7 +140,7 @@ namespace cellular
             if (newPhoneStr != null)
                 Msg.ShowInfoMessage($"Для клиента добавлен норме {newPhoneStr} с тарифом \"{selectedTatif.Name}\".");
             else
-                Msg.ShowWarningMessage("Не удалось сгенерировать номер");
+                Msg.ShowWarningMessage("Не удалось сгенерировать номер. Обратитесь к администратору.");
         }
 
         private void linkLabelRemovePhone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -151,9 +151,11 @@ namespace cellular
             form.ShowDialog();
             if (form.DialogResult != DialogResult.OK)
                 return;
+
             PhoneNumber phoneNumber = form.GetPhoneNumber();
             if (Dialog.ConfirmDialog($"Уверены, что хотите удалить номер {phoneNumber.Num}?") != DialogResult.Yes)
                 return;
+            
             PhoneNumber removedPhone = this.db.PhoneNumbers.Where(r => r.Id == phoneNumber.Id).First();
             this.db.PhoneNumbers.Remove(removedPhone);
             this.db.SaveChanges();
@@ -179,6 +181,17 @@ namespace cellular
         private void linkLabelPrice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!(this.CheckSelectedClient())) { return; }
+
+            // Выбрать номер для которого показать
+            PhoneNumberForClientForm form = new PhoneNumberForClientForm(this.selectedClient);
+            form.ShowDialog();
+            if (form.DialogResult != DialogResult.OK)
+                return;
+            PhoneNumber phoneNumber = form.GetPhoneNumber();
+
+            // Показать информацию
+            PriceForPhoneNumberForm priceForPhoneNumberForm = new PriceForPhoneNumberForm(phoneNumber);
+            priceForPhoneNumberForm.ShowDialog();
         }
 
         private void buttonSelectClient_Click(object sender, EventArgs e)

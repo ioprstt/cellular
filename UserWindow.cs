@@ -47,7 +47,9 @@ namespace cellular
 
         private void linkLabelShowPrice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            PhoneNumber phoneNumber = this.db.PhoneNumbers.Where(r => r.Num == this.phoneNumber).First();
+            PriceForPhoneNumberForm form = new PriceForPhoneNumberForm(phoneNumber);
+            form.ShowDialog();
         }
     }
 }
