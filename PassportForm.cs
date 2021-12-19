@@ -86,7 +86,7 @@ namespace cellular
             string series = this.GetSeries();
             string num = this.GetNum();
             // Проверяем повторение паспорта только если серия и номер не совпадает с паспортом из инициализации
-            if (series != this.initPassport.Series || num != this.initPassport.Num)
+            if (this.initPassport != null &&  (series != this.initPassport.Series || num != this.initPassport.Num))
             {
                 Passport passport = db.Passports.Where(r => r.Series == series && r.Num == num).FirstOrDefault();
                 if (passport != null)

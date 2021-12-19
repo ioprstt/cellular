@@ -33,7 +33,7 @@ namespace cellular
                 passportsInfo.Add(passport.Id, passportManager.GetNameAndPassport());
             }
 
-            using (ClientForm form = new ClientForm(passportsInfo))
+            using (CreateClientForm form = new CreateClientForm(passportsInfo))
             {
                 form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)
