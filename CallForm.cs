@@ -24,7 +24,7 @@ namespace cellular
             this.dateTimePickerStartTime.CustomFormat = "dd.MM.yyyy HH:mm:ss";
 
             this.dateTimePickerEndTime.Format = DateTimePickerFormat.Custom;
-            this.dateTimePickerEndTime.CustomFormat = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+            this.dateTimePickerEndTime.CustomFormat = "dd.MM.yyyy HH:mm:ss";
 
             this.db = new ApplicationContext();
             this.initCall = call;
