@@ -206,7 +206,81 @@ namespace cellular
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
+            TabPage selectePage = this.tabControlAdmin.SelectedTab;
 
+            if (selectePage == this.tabPagePassport)
+            {
+                if (this.RowSelected(this.dgvAdminPassport))
+                {
+                    int id = this.GetId(this.dgvAdminPassport);
+                    Passport passport = this.db.Passports.Where(r => r.Id == id).First();
+                    if (Dialog.ConfirmDialog("Уверены, что хотите безвозвратно удалить паспорт?") != DialogResult.Yes)
+                        return;
+                    this.db.Passports.Remove(passport);
+                    this.db.SaveChanges();
+                }
+                else
+                {
+                    Msg.ShowErrorMessage("Выберите строку для редактирования");
+                }
+            }
+            else if (selectePage == this.tabPageClient)
+            {
+                if (this.RowSelected(this.dgvAdminClient))
+                {
+                    int id = this.GetId(this.dgvAdminClient);
+                    Client client = this.db.Clients.Where(r => r.Id == id).First();
+                    if (Dialog.ConfirmDialog("Уверены, что хотите безвозвратно удалить клиента?") != DialogResult.Yes)
+                        return;
+                    this.db.Clients.Remove(client);
+                    this.db.SaveChanges();
+                }
+                else
+                {
+                    Msg.ShowErrorMessage("Выберите строку для редактирования");
+                }
+            }
+            else if (selectePage == this.tabPageTariff)
+            {
+                if (this.RowSelected(this.dgvAdminTariff))
+                {
+                    int id = this.GetId(this.dgvAdminTariff);
+                    Tariff tariff = this.db.Tariffs.Where(r => r.Id == id).First();
+                    if (Dialog.ConfirmDialog("Уверены, что хотите безвозвратно удалить тариф?") != DialogResult.Yes)
+                        return;
+                    this.db.Tariffs.Remove(tariff);
+                    this.db.SaveChanges();
+                }
+            }
+            else if (selectePage == this.tabPagePhoneNumber)
+            {
+                if (this.RowSelected(this.dgvAdminPhoneNumber))
+                {
+                    int id = this.GetId(this.dgvAdminPhoneNumber);
+                    PhoneNumber phoneNumber = this.db.PhoneNumbers.Where(r => r.Id == id).First();
+                    if (Dialog.ConfirmDialog("Уверены, что хотите безвозвратно удалить номер телефона?") != DialogResult.Yes)
+                        return;
+                    this.db.PhoneNumbers.Remove(phoneNumber);
+                    this.db.SaveChanges();
+                }
+            }
+            else if (selectePage == this.tabPageCall)
+            {
+                if (this.RowSelected(this.dgvAdminCall))
+                {
+                    int id = this.GetId(this.dgvAdminCall);
+                    Call call = this.db.Calls.Where(r => r.Id == id).First();
+                    if (Dialog.ConfirmDialog("Уверены, что хотите безвозвратно удалить звонок?") != DialogResult.Yes)
+                        return;
+                    this.db.Calls.Remove(call);
+                    this.db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Неожиданное поведение");
+            }
+            this.Load(); // отобразить обновление
         }
     }
 }
