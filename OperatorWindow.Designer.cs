@@ -94,7 +94,7 @@ namespace cellular
             // 
             this.linkLabelRemovePhone.AutoSize = true;
             this.linkLabelRemovePhone.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.linkLabelRemovePhone.Location = new System.Drawing.Point(12, 371);
+            this.linkLabelRemovePhone.Location = new System.Drawing.Point(12, 366);
             this.linkLabelRemovePhone.Name = "linkLabelRemovePhone";
             this.linkLabelRemovePhone.Size = new System.Drawing.Size(182, 32);
             this.linkLabelRemovePhone.TabIndex = 17;

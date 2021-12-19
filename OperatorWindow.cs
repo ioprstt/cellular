@@ -146,6 +146,18 @@ namespace cellular
         private void linkLabelRemovePhone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!(this.CheckSelectedClient())) { return; }
+
+            PhoneNumberForClientForm form = new PhoneNumberForClientForm(this.selectedClient);
+            form.ShowDialog();
+            if (form.DialogResult != DialogResult.OK)
+                return;
+            PhoneNumber phoneNumber = form.GetPhoneNumber();
+            if (Dialog.ConfirmDialog($"Уверены, что хотите удалить номер {phoneNumber.Num}?") != DialogResult.Yes)
+                return;
+            PhoneNumber removedPhone = this.db.PhoneNumbers.Where(r => r.Id == phoneNumber.Id).First();
+            this.db.PhoneNumbers.Remove(removedPhone);
+            this.db.SaveChanges();
+            Msg.ShowInfoMessage($"Номер {phoneNumber.Num} успешно удалён.");
         }
 
         private void linkLabelGetCalls_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

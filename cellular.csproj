@@ -146,6 +146,12 @@
     <Compile Include="PassportForm.Designer.cs">
       <DependentUpon>PassportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PhoneNumberForClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhoneNumberForClientForm.Designer.cs">
+      <DependentUpon>PhoneNumberForClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchClientForm.cs">
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PassportForm.resx">
       <DependentUpon>PassportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhoneNumberForClientForm.resx">
+      <DependentUpon>PhoneNumberForClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
