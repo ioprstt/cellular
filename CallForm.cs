@@ -20,6 +20,12 @@ namespace cellular
             InitializeComponent();
             CenterToScreen();
 
+            this.dateTimePickerStartTime.Format = DateTimePickerFormat.Custom;
+            this.dateTimePickerStartTime.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+
+            this.dateTimePickerEndTime.Format = DateTimePickerFormat.Custom;
+            this.dateTimePickerEndTime.CustomFormat = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+
             this.db = new ApplicationContext();
             this.initCall = call;
 

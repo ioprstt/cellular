@@ -153,6 +153,7 @@ namespace cellular
             this.dgvAdminPassport.RowTemplate.Height = 25;
             this.dgvAdminPassport.Size = new System.Drawing.Size(656, 222);
             this.dgvAdminPassport.TabIndex = 0;
+            this.dgvAdminPassport.SelectionChanged += new System.EventHandler(this.dgvAdminPassport_SelectionChanged);
             // 
             // Column1
             // 

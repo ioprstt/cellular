@@ -282,5 +282,11 @@ namespace cellular
             }
             this.Load(); // отобразить обновление
         }
+
+        private void dgvAdminPassport_SelectionChanged(object sender, EventArgs e)
+        {
+            //int row = this.dgvAdminPassport.SelectedCells[0].RowIndex;
+            //this.dgvAdminPassport.Rows[0].Selected = true;
+        }
     }
 }
