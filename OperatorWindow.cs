@@ -106,6 +106,13 @@ namespace cellular
         {
             if (!(this.CheckSelectedClient())) { return; }
 
+            List<Tariff> tariffs = db.Tariffs.ToList();
+            if (tariffs.Count == 0)
+            {
+                Msg.ShowErrorMessage("Отсутствуют тарифы!");
+                return;
+            }
+
             // Выбираем тариф
             Tariff selectedTatif;
             SelectTariffForm form = new SelectTariffForm();
