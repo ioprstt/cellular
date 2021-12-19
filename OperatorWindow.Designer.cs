@@ -41,6 +41,7 @@ namespace cellular
             this.buttonSelectClient = new System.Windows.Forms.Button();
             this.labelSelectedClient = new System.Windows.Forms.Label();
             this.buttonResetClient = new System.Windows.Forms.Button();
+            this.linkLabelPrice = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // linkLabelCreateClient
@@ -69,7 +70,7 @@ namespace cellular
             // 
             this.linkLabelCreatePhone.AutoSize = true;
             this.linkLabelCreatePhone.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.linkLabelCreatePhone.Location = new System.Drawing.Point(11, 345);
+            this.linkLabelCreatePhone.Location = new System.Drawing.Point(12, 329);
             this.linkLabelCreatePhone.Name = "linkLabelCreatePhone";
             this.linkLabelCreatePhone.Size = new System.Drawing.Size(181, 32);
             this.linkLabelCreatePhone.TabIndex = 15;
@@ -93,7 +94,7 @@ namespace cellular
             // 
             this.linkLabelRemovePhone.AutoSize = true;
             this.linkLabelRemovePhone.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.linkLabelRemovePhone.Location = new System.Drawing.Point(10, 380);
+            this.linkLabelRemovePhone.Location = new System.Drawing.Point(12, 371);
             this.linkLabelRemovePhone.Name = "linkLabelRemovePhone";
             this.linkLabelRemovePhone.Size = new System.Drawing.Size(182, 32);
             this.linkLabelRemovePhone.TabIndex = 17;
@@ -117,7 +118,7 @@ namespace cellular
             // 
             this.linkLabelGetCalls.AutoSize = true;
             this.linkLabelGetCalls.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.linkLabelGetCalls.Location = new System.Drawing.Point(11, 418);
+            this.linkLabelGetCalls.Location = new System.Drawing.Point(12, 403);
             this.linkLabelGetCalls.Name = "linkLabelGetCalls";
             this.linkLabelGetCalls.Size = new System.Drawing.Size(438, 32);
             this.linkLabelGetCalls.TabIndex = 19;
@@ -179,11 +180,24 @@ namespace cellular
             this.buttonResetClient.UseVisualStyleBackColor = true;
             this.buttonResetClient.Click += new System.EventHandler(this.buttonResetClient_Click);
             // 
+            // linkLabelPrice
+            // 
+            this.linkLabelPrice.AutoSize = true;
+            this.linkLabelPrice.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.linkLabelPrice.Location = new System.Drawing.Point(12, 445);
+            this.linkLabelPrice.Name = "linkLabelPrice";
+            this.linkLabelPrice.Size = new System.Drawing.Size(339, 32);
+            this.linkLabelPrice.TabIndex = 25;
+            this.linkLabelPrice.TabStop = true;
+            this.linkLabelPrice.Text = "Получить расходы за период";
+            this.linkLabelPrice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelPrice_LinkClicked);
+            // 
             // OperatorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 459);
+            this.ClientSize = new System.Drawing.Size(686, 493);
+            this.Controls.Add(this.linkLabelPrice);
             this.Controls.Add(this.buttonResetClient);
             this.Controls.Add(this.labelSelectedClient);
             this.Controls.Add(this.buttonSelectClient);
@@ -217,5 +231,6 @@ namespace cellular
         private System.Windows.Forms.Button buttonSelectClient;
         private System.Windows.Forms.Label labelSelectedClient;
         private System.Windows.Forms.Button buttonResetClient;
+        private System.Windows.Forms.LinkLabel linkLabelPrice;
     }
 }

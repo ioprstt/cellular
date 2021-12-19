@@ -109,12 +109,17 @@ namespace cellular
 
         private void linkLabelRemovePhone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            if (!(this.CheckSelectedClient())) { return; }
         }
 
         private void linkLabelGetCalls_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (!(this.CheckSelectedClient())) { return; }
+        }
 
+        private void linkLabelPrice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!(this.CheckSelectedClient())) { return; }
         }
 
         private void buttonSelectClient_Click(object sender, EventArgs e)

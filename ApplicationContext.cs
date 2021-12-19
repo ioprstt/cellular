@@ -67,9 +67,9 @@ namespace cellular
     {
         [Key]
         public int Id { get; set; }
-        
+
+        [ForeignKey("Passport")]
         public int PassportId { get; set; }
-        //[ForeignKey("PassportId")]
         public virtual Passport Passport { get; set; }
 
         public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
@@ -78,6 +78,25 @@ namespace cellular
         {
             UserManager userManager = new UserManager(this.Id);
             return userManager.GetFullName();
+        }
+    }
+
+    public partial class Tariff
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Column(TypeName = "VARCHAR"), MaxLength(63), Required, Index("IX_Tariffs_Name", IsUnique = true)]
+        public string Name { get; set; }
+
+        [Required]
+        public float Price { get; set; }
+
+        public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 
@@ -92,7 +111,11 @@ namespace cellular
         
         [Column(TypeName = "VARCHAR"), MaxLength(11), MinLength(11), Required, Index("IX_PhoneNumbers_Num", IsUnique = true)]
         public string Num { get; set; }
-        
+
+        [ForeignKey("Tariff")]
+        public int TariffId { get; set; }
+        public virtual Tariff Tariff { get; set; }
+
         [Column(TypeName = "DATE"), Required]
         public DateTime RegistrationDate { get; set; }
 
@@ -125,12 +148,23 @@ namespace cellular
         {
             return $"{OutgoingPhoneNumber} --> {IncomingPhoneNumber}";
         }
+
+        public TimeSpan GetDuration()
+        {
+            return this.EndTime.Subtract(this.StartTime);
+        }
+
+        public int GetDurationAsMinutes()
+        {
+            return this.GetDuration().Minutes;
+        }
     }
 
     public class ApplicationContext : DbContext
     {
         public virtual DbSet<Passport> Passports { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Tariff> Tariffs { get; set; }
         public virtual DbSet<PhoneNumber> PhoneNumbers { get; set; }
         public virtual DbSet<Call> Calls { get; set; }
 
@@ -148,6 +182,8 @@ namespace cellular
 CREATE UNIQUE INDEX `IX_Clients_PassportId` ON `Clients` (`PassportId`);
 
 CREATE UNIQUE INDEX `IX_Passport_SeriesAndNum` ON `Passports` (`Series`, `Num`);
+
+CREATE UNIQUE INDEX `IX_Tariffs_Name` ON `Tariffs` (`Name`);
 
 CREATE UNIQUE INDEX `IX_PhoneNumber_Num` ON `PhoneNumbers` (`Num`);
 ");
