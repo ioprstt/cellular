@@ -68,6 +68,7 @@ namespace cellular
             // 
             // numericUpDownPrice
             // 
+            this.numericUpDownPrice.DecimalPlaces = 2;
             this.numericUpDownPrice.Location = new System.Drawing.Point(110, 47);
             this.numericUpDownPrice.Name = "numericUpDownPrice";
             this.numericUpDownPrice.Size = new System.Drawing.Size(145, 20);
