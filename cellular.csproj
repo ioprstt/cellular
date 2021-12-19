@@ -72,6 +72,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -122,6 +123,12 @@
     <Compile Include="Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="CallForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CallForm.Designer.cs">
+      <DependentUpon>CallForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CallsForPhoneNumberForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +164,12 @@
     </Compile>
     <Compile Include="PhoneNumberForClientForm.Designer.cs">
       <DependentUpon>PhoneNumberForClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneNumberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhoneNumberForm.Designer.cs">
+      <DependentUpon>PhoneNumberForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PriceForPhoneNumberForm.cs">
       <SubType>Form</SubType>
@@ -206,6 +219,9 @@
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CallForm.resx">
+      <DependentUpon>CallForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CallsForPhoneNumberForm.resx">
       <DependentUpon>CallsForPhoneNumberForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PhoneNumberForClientForm.resx">
       <DependentUpon>PhoneNumberForClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhoneNumberForm.resx">
+      <DependentUpon>PhoneNumberForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PriceForPhoneNumberForm.resx">
       <DependentUpon>PriceForPhoneNumberForm.cs</DependentUpon>

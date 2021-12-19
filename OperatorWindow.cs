@@ -33,16 +33,15 @@ namespace cellular
                 passportsInfo.Add(passport.Id, passportManager.GetNameAndPassport());
             }
 
-            using (ClientForm form = new ClientForm())
+            ClientForm form = new ClientForm();
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
             {
-                form.ShowDialog();
-                if (form.DialogResult == DialogResult.OK)
-                {
-                    Client client = form.GetClient();
-                    db.Clients.Add(client);
-                    db.SaveChanges();
-                    Msg.ShowInfoMessage($"Клиент с идентификатором {client.Id} успешно создан.");
-                }
+                Client client = form.GetClient();
+                db.Clients.Add(client);
+                db.SaveChanges();
+                Msg.ShowInfoMessage($"Клиент с идентификатором {client.Id} успешно создан.");
+                this.SelectClient(client);
             }
         }
 
@@ -194,22 +193,25 @@ namespace cellular
             priceForPhoneNumberForm.ShowDialog();
         }
 
+        private void SelectClient(Client client)
+        {
+            this.selectedClient = client;
+            UserManager userManager = new UserManager(client.Id);
+            string fullPassport = userManager.GetFullPassport();
+            string fullName = userManager.GetFullName();
+            this.labelSelectedClient.Text = $"Клиент {client.Id} ({fullPassport}, {fullName})";
+        }
+
         private void buttonSelectClient_Click(object sender, EventArgs e)
         {
-            using (SearchClientForm form = new SearchClientForm())
+            SearchClientForm form = new SearchClientForm();
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
             {
-                form.ShowDialog();
-                if (form.DialogResult == DialogResult.OK)
+                Client client = form.GetClient();
+                if (client != null)
                 {
-                    Client client = form.GetClient();
-                    if (client != null)
-                    {
-                        this.selectedClient = client;
-                        UserManager userManager = new UserManager(client.Id);
-                        string fullPassport = userManager.GetFullPassport();
-                        string fullName = userManager.GetFullName();
-                        this.labelSelectedClient.Text = $"Клиент {client.Id} ({fullPassport}, {fullName})";
-                    }
+                    this.SelectClient(client);
                 }
             }
         }

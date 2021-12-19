@@ -65,6 +65,9 @@ namespace cellular
         {
             if (!(this.Validate()))
                 return;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         public Tariff GetTariff()

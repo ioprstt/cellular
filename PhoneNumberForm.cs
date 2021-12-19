@@ -116,6 +116,9 @@ namespace cellular
         {
             if (!(this.Validate()))
                 return;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void linkLabelCreateClient_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -37,18 +37,20 @@ namespace cellular
         private void InitPhoneNumbers()
         {
             List<ComboBoxItem> comboBoxItems = new List<ComboBoxItem>();
+            List<ComboBoxItem> comboBoxItems2 = new List<ComboBoxItem>();
             IList<PhoneNumber> phoneNumbers = this.db.PhoneNumbers.ToList();
             foreach (PhoneNumber phoneNumber in phoneNumbers)
             {
                 ComboBoxItem item = new ComboBoxItem(phoneNumber.Id, phoneNumber.Num);
                 comboBoxItems.Add(item);
+                comboBoxItems2.Add(item);
             }
 
             this.comboBoxOutgoingPhoneNumber.DataSource = comboBoxItems;
             this.comboBoxOutgoingPhoneNumber.ValueMember = "Key";
             this.comboBoxOutgoingPhoneNumber.DisplayMember = "Value";
 
-            this.comboBoxIncomingPhoneNumber.DataSource = comboBoxItems;
+            this.comboBoxIncomingPhoneNumber.DataSource = comboBoxItems2;
             this.comboBoxIncomingPhoneNumber.ValueMember = "Key";
             this.comboBoxIncomingPhoneNumber.DisplayMember = "Value";
         }
@@ -125,6 +127,9 @@ namespace cellular
         {
             if (!(this.Validate()))
                 return;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void linkLabelCreatePhoneNumber_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

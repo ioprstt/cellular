@@ -48,6 +48,11 @@ namespace cellular
             this.dgvAdminClient = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageTariff = new System.Windows.Forms.TabPage();
+            this.dgvTariff = new System.Windows.Forms.DataGridView();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPagePhoneNumber = new System.Windows.Forms.TabPage();
             this.dgvAdminPhoneNumber = new System.Windows.Forms.DataGridView();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,22 +67,17 @@ namespace cellular
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAdminUpdate = new System.Windows.Forms.Button();
-            this.tabPageTariff = new System.Windows.Forms.TabPage();
-            this.dgvTariff = new System.Windows.Forms.DataGridView();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlAdmin.SuspendLayout();
             this.tabPagePassport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPassport)).BeginInit();
             this.tabPageClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminClient)).BeginInit();
+            this.tabPageTariff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).BeginInit();
             this.tabPagePhoneNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPhoneNumber)).BeginInit();
             this.tabPageCall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCall)).BeginInit();
-            this.tabPageTariff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -88,6 +88,7 @@ namespace cellular
             this.button1.TabIndex = 1;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonChange
             // 
@@ -97,6 +98,7 @@ namespace cellular
             this.buttonChange.TabIndex = 2;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonRemove
             // 
@@ -106,6 +108,7 @@ namespace cellular
             this.buttonRemove.TabIndex = 3;
             this.buttonRemove.Text = "Удалить";
             this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // tabControlAdmin
             // 
@@ -251,6 +254,53 @@ namespace cellular
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             // 
+            // tabPageTariff
+            // 
+            this.tabPageTariff.Controls.Add(this.dgvTariff);
+            this.tabPageTariff.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTariff.Name = "tabPageTariff";
+            this.tabPageTariff.Size = new System.Drawing.Size(656, 222);
+            this.tabPageTariff.TabIndex = 5;
+            this.tabPageTariff.Text = "Тариф";
+            this.tabPageTariff.UseVisualStyleBackColor = true;
+            // 
+            // dgvTariff
+            // 
+            this.dgvTariff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTariff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column21,
+            this.Column22,
+            this.Column23});
+            this.dgvTariff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTariff.Location = new System.Drawing.Point(0, 0);
+            this.dgvTariff.Name = "dgvTariff";
+            this.dgvTariff.Size = new System.Drawing.Size(656, 222);
+            this.dgvTariff.TabIndex = 0;
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "Id";
+            this.Column21.Frozen = true;
+            this.Column21.HeaderText = "ID";
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "Name";
+            this.Column22.Frozen = true;
+            this.Column22.HeaderText = "Название";
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "Price";
+            this.Column23.Frozen = true;
+            this.Column23.HeaderText = "Цена (руб. за мин.)";
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            // 
             // tabPagePhoneNumber
             // 
             this.tabPagePhoneNumber.Controls.Add(this.dgvAdminPhoneNumber);
@@ -375,53 +425,6 @@ namespace cellular
             this.buttonAdminUpdate.UseVisualStyleBackColor = true;
             this.buttonAdminUpdate.Click += new System.EventHandler(this.buttonAdminUpdate_Click);
             // 
-            // tabPageTariff
-            // 
-            this.tabPageTariff.Controls.Add(this.dgvTariff);
-            this.tabPageTariff.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTariff.Name = "tabPageTariff";
-            this.tabPageTariff.Size = new System.Drawing.Size(656, 222);
-            this.tabPageTariff.TabIndex = 5;
-            this.tabPageTariff.Text = "Тариф";
-            this.tabPageTariff.UseVisualStyleBackColor = true;
-            // 
-            // dgvTariff
-            // 
-            this.dgvTariff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTariff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column21,
-            this.Column22,
-            this.Column23});
-            this.dgvTariff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTariff.Location = new System.Drawing.Point(0, 0);
-            this.dgvTariff.Name = "dgvTariff";
-            this.dgvTariff.Size = new System.Drawing.Size(656, 222);
-            this.dgvTariff.TabIndex = 0;
-            // 
-            // Column21
-            // 
-            this.Column21.DataPropertyName = "Id";
-            this.Column21.Frozen = true;
-            this.Column21.HeaderText = "ID";
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
-            // 
-            // Column22
-            // 
-            this.Column22.DataPropertyName = "Name";
-            this.Column22.Frozen = true;
-            this.Column22.HeaderText = "Название";
-            this.Column22.Name = "Column22";
-            this.Column22.ReadOnly = true;
-            // 
-            // Column23
-            // 
-            this.Column23.DataPropertyName = "Price";
-            this.Column23.Frozen = true;
-            this.Column23.HeaderText = "Цена (руб. за мин.)";
-            this.Column23.Name = "Column23";
-            this.Column23.ReadOnly = true;
-            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,12 +442,12 @@ namespace cellular
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPassport)).EndInit();
             this.tabPageClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminClient)).EndInit();
+            this.tabPageTariff.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).EndInit();
             this.tabPagePhoneNumber.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPhoneNumber)).EndInit();
             this.tabPageCall.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCall)).EndInit();
-            this.tabPageTariff.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).EndInit();
             this.ResumeLayout(false);
 
         }

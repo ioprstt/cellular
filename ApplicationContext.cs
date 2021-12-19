@@ -79,6 +79,11 @@ namespace cellular
             UserManager userManager = new UserManager(this.Id);
             return userManager.GetFullName();
         }
+
+        public void Update(Client client)
+        {
+            this.PassportId = client.PassportId;
+        }
     }
 
     public partial class Tariff
@@ -97,6 +102,12 @@ namespace cellular
         public override string ToString()
         {
             return this.Name;
+        }
+
+        public void Update(Tariff tariff)
+        {
+            this.Name = tariff.Name;
+            this.Price = tariff.Price;
         }
     }
 
@@ -122,6 +133,14 @@ namespace cellular
         public override string ToString()
         {
             return Utils.ValidatePhone(Num);
+        }
+
+        public void Update(PhoneNumber phoneNumber)
+        {
+            this.ClientId = phoneNumber.ClientId;
+            this.Num = phoneNumber.Num;
+            this.TariffId = phoneNumber.TariffId;
+            this.RegistrationDate = phoneNumber.RegistrationDate;
         }
     }
 
@@ -149,14 +168,12 @@ namespace cellular
             return $"{OutgoingPhoneNumber} --> {IncomingPhoneNumber}";
         }
 
-        public TimeSpan GetDuration()
+        public void Update(Call call)
         {
-            return this.EndTime.Subtract(this.StartTime);
-        }
-
-        public int GetDurationAsMinutes()
-        {
-            return this.GetDuration().Minutes;
+            this.OutgoingPhoneNumberId = call.OutgoingPhoneNumberId;
+            this.IncomingPhoneNumberId = call.IncomingPhoneNumberId;
+            this.StartTime = call.StartTime;
+            this.EndTime = call.EndTime;
         }
     }
 
