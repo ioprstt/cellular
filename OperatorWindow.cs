@@ -15,6 +15,7 @@ namespace cellular
     {
         private Client selectedClient = null;
         ApplicationContext db;
+        static Random rand = new Random();
 
         public OperatorWindow()
         {
@@ -105,6 +106,41 @@ namespace cellular
         private void linkLabelCreatePhone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!(this.CheckSelectedClient())) { return; }
+
+            // Выбираем тариф
+            Tariff selectedTatif;
+            SelectTariffForm form = new SelectTariffForm();
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+                selectedTatif = form.GetTariff();
+            else
+                return;
+
+            // Генерируем номер
+            string newPhoneStr = null;
+            int k = 0;
+            while (k < 100)
+            {
+                newPhoneStr = this.GeneratePhoneNumber();
+                PhoneNumber phone = db.PhoneNumbers.Where(r => r.Num == newPhoneStr).FirstOrDefault();
+                if (phone == null)
+                {
+                    PhoneNumber newPhoneNumber = new PhoneNumber {
+                        ClientId = this.selectedClient.Id,
+                        Num = newPhoneStr,
+                        TariffId = selectedTatif.Id,
+                        RegistrationDate = DateTime.Now.Date
+                    };
+                    db.PhoneNumbers.Add(newPhoneNumber);
+                    db.SaveChanges();
+                    break;
+                }
+                k++;
+            }
+            if (newPhoneStr != null)
+                Msg.ShowInfoMessage($"Для клиента добавлен норме {newPhoneStr} с тарифом \"{selectedTatif.Name}\".");
+            else
+                Msg.ShowWarningMessage("Не удалось сгенерировать номер");
         }
 
         private void linkLabelRemovePhone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -164,6 +200,20 @@ namespace cellular
                 return false;
             }
             return true;
+        }
+
+        private string GeneratePhoneNumber()
+        {
+            string digits = "0123456789";
+            List<string> resList = new List<string>();
+            resList.Add("8");
+            resList.Add("9");
+            for (int i = 0; i < 9; i++)
+            {
+                resList.Add(rand.Next(0, 9).ToString());
+            }
+            string result = String.Join<string>("", resList);
+            return Utils.ValidatePhone(result);
         }
     }
 }

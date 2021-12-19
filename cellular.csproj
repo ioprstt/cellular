@@ -154,6 +154,12 @@
     <Compile Include="SearchClientForm.Designer.cs">
       <DependentUpon>SearchClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectTariffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectTariffForm.Designer.cs">
+      <DependentUpon>SelectTariffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAuth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </Compile>
     <EmbeddedResource Include="SearchClientForm.resx">
       <DependentUpon>SearchClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectTariffForm.resx">
+      <DependentUpon>SelectTariffForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAuth.resx">
       <DependentUpon>UserAuth.cs</DependentUpon>
