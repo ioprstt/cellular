@@ -26,7 +26,7 @@ namespace cellular
             this.dgvAdminPassport.AutoGenerateColumns = false;
             this.dgvAdminClient.AutoGenerateColumns = false;
             this.dgvAdminClient.AutoGenerateColumns = false;
-            this.dgvTariff.AutoGenerateColumns = false;
+            this.dgvAdminTariff.AutoGenerateColumns = false;
             this.dgvAdminPhoneNumber.AutoGenerateColumns = false;
             this.dgvAdminCall.AutoGenerateColumns = false;
 
@@ -37,7 +37,7 @@ namespace cellular
         {
             this.dgvAdminPassport.DataSource = db.Passports.ToList();
             this.dgvAdminClient.DataSource = db.Clients.ToList();
-            this.dgvTariff.DataSource = db.Tariffs.ToList();
+            this.dgvAdminTariff.DataSource = db.Tariffs.ToList();
             this.dgvAdminPhoneNumber.DataSource = db.PhoneNumbers.ToList();
             this.dgvAdminCall.DataSource = db.Calls.ToList();
         }
@@ -103,29 +103,110 @@ namespace cellular
             this.Load(); // отобразить обновление
         }
 
+        private int GetId(DataGridView dgv)
+        {
+            int row = dgv.SelectedRows[0].Index;
+            int id = (int)dgv.Rows[row].Cells[0].Value;
+            return id;
+        }
+
+        private bool RowSelected(DataGridView dgv)
+        {
+            return dgv.SelectedRows.Count > 0;
+        }
+
         private void buttonChange_Click(object sender, EventArgs e)
         {
+            TabPage selectePage = this.tabControlAdmin.SelectedTab;
 
+            if (selectePage == this.tabPagePassport)
+            {
+                if (this.RowSelected(this.dgvAdminPassport))
+                {
+                    int id = this.GetId(this.dgvAdminPassport);
+                    Passport passport = this.db.Passports.Where(r => r.Id == id).First();
+                    PassportForm form = new PassportForm(passport);
+                    form.ShowDialog();
+                    if (form.DialogResult != DialogResult.OK)
+                        return;
+                    passport.Update(form.GetPassport());
+                    this.db.SaveChanges();
+                }
+                else
+                {
+                    Msg.ShowErrorMessage("Выберите строку для редактирования");
+                }
+            }
+            else if (selectePage == this.tabPageClient)
+            {
+                if (this.RowSelected(this.dgvAdminClient))
+                {
+                    int id = this.GetId(this.dgvAdminClient);
+                    Client client = this.db.Clients.Where(r => r.Id == id).First();
+                    ClientForm form = new ClientForm(client);
+                    form.ShowDialog();
+                    if (form.DialogResult != DialogResult.OK)
+                        return;
+                    client.Update(form.GetClient());
+                    this.db.SaveChanges();
+                }
+                else
+                {
+                    Msg.ShowErrorMessage("Выберите строку для редактирования");
+                }
+            }
+            else if (selectePage == this.tabPageTariff)
+            {
+                if (this.RowSelected(this.dgvAdminTariff))
+                {
+                    int id = this.GetId(this.dgvAdminTariff);
+                    Tariff tariff = this.db.Tariffs.Where(r => r.Id == id).First();
+                    TariffForm form = new TariffForm(tariff);
+                    form.ShowDialog();
+                    if (form.DialogResult != DialogResult.OK)
+                        return;
+                    tariff.Update(form.GetTariff());
+                    this.db.SaveChanges();
+                }
+            }
+            else if (selectePage == this.tabPagePhoneNumber)
+            {
+                if (this.RowSelected(this.dgvAdminPhoneNumber))
+                {
+                    int id = this.GetId(this.dgvAdminPhoneNumber);
+                    PhoneNumber phoneNumber = this.db.PhoneNumbers.Where(r => r.Id == id).First();
+                    PhoneNumberForm form = new PhoneNumberForm(phoneNumber);
+                    form.ShowDialog();
+                    if (form.DialogResult != DialogResult.OK)
+                        return;
+                    phoneNumber.Update(form.GetPhoneNumber());
+                    this.db.SaveChanges();
+                }
+            }
+            else if (selectePage == this.tabPageCall)
+            {
+                if (this.RowSelected(this.dgvAdminCall))
+                {
+                    int id = this.GetId(this.dgvAdminCall);
+                    Call call = this.db.Calls.Where(r => r.Id == id).First();
+                    CallForm form = new CallForm(call);
+                    form.ShowDialog();
+                    if (form.DialogResult != DialogResult.OK)
+                        return;
+                    call.Update(form.GetCall());
+                    this.db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Неожиданное поведение");
+            }
+            this.Load(); // отобразить обновление
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private Form GetFormForSelected()
-        {
-            TabPage selectePage = this.tabControlAdmin.SelectedTab;
-            Dictionary<TabPage, Form> dict = new Dictionary<TabPage, Form>
-            {
-                { this.tabPagePassport, new PassportForm() },
-                { this.tabPageClient, new ClientForm() },
-                { this.tabPageTariff, new TariffForm() },
-                { this.tabPagePhoneNumber, new PhoneNumberForm() },
-                { this.tabPageCall, new CallForm() }
-            };
-            Form form = dict[selectePage];
-            return form;
         }
     }
 }

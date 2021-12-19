@@ -49,7 +49,7 @@ namespace cellular
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageTariff = new System.Windows.Forms.TabPage();
-            this.dgvTariff = new System.Windows.Forms.DataGridView();
+            this.dgvAdminTariff = new System.Windows.Forms.DataGridView();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +73,7 @@ namespace cellular
             this.tabPageClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminClient)).BeginInit();
             this.tabPageTariff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdminTariff)).BeginInit();
             this.tabPagePhoneNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPhoneNumber)).BeginInit();
             this.tabPageCall.SuspendLayout();
@@ -148,6 +148,7 @@ namespace cellular
             this.Column9});
             this.dgvAdminPassport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAdminPassport.Location = new System.Drawing.Point(0, 0);
+            this.dgvAdminPassport.MultiSelect = false;
             this.dgvAdminPassport.Name = "dgvAdminPassport";
             this.dgvAdminPassport.RowTemplate.Height = 25;
             this.dgvAdminPassport.Size = new System.Drawing.Size(656, 222);
@@ -235,6 +236,7 @@ namespace cellular
             this.Column11});
             this.dgvAdminClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAdminClient.Location = new System.Drawing.Point(3, 3);
+            this.dgvAdminClient.MultiSelect = false;
             this.dgvAdminClient.Name = "dgvAdminClient";
             this.dgvAdminClient.RowTemplate.Height = 25;
             this.dgvAdminClient.Size = new System.Drawing.Size(650, 216);
@@ -256,7 +258,7 @@ namespace cellular
             // 
             // tabPageTariff
             // 
-            this.tabPageTariff.Controls.Add(this.dgvTariff);
+            this.tabPageTariff.Controls.Add(this.dgvAdminTariff);
             this.tabPageTariff.Location = new System.Drawing.Point(4, 22);
             this.tabPageTariff.Name = "tabPageTariff";
             this.tabPageTariff.Size = new System.Drawing.Size(656, 222);
@@ -264,18 +266,19 @@ namespace cellular
             this.tabPageTariff.Text = "Тариф";
             this.tabPageTariff.UseVisualStyleBackColor = true;
             // 
-            // dgvTariff
+            // dgvAdminTariff
             // 
-            this.dgvTariff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTariff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAdminTariff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdminTariff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column21,
             this.Column22,
             this.Column23});
-            this.dgvTariff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTariff.Location = new System.Drawing.Point(0, 0);
-            this.dgvTariff.Name = "dgvTariff";
-            this.dgvTariff.Size = new System.Drawing.Size(656, 222);
-            this.dgvTariff.TabIndex = 0;
+            this.dgvAdminTariff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAdminTariff.Location = new System.Drawing.Point(0, 0);
+            this.dgvAdminTariff.MultiSelect = false;
+            this.dgvAdminTariff.Name = "dgvAdminTariff";
+            this.dgvAdminTariff.Size = new System.Drawing.Size(656, 222);
+            this.dgvAdminTariff.TabIndex = 0;
             // 
             // Column21
             // 
@@ -321,6 +324,7 @@ namespace cellular
             this.Column15});
             this.dgvAdminPhoneNumber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAdminPhoneNumber.Location = new System.Drawing.Point(0, 0);
+            this.dgvAdminPhoneNumber.MultiSelect = false;
             this.dgvAdminPhoneNumber.Name = "dgvAdminPhoneNumber";
             this.dgvAdminPhoneNumber.RowTemplate.Height = 25;
             this.dgvAdminPhoneNumber.Size = new System.Drawing.Size(656, 222);
@@ -375,6 +379,7 @@ namespace cellular
             this.Column20});
             this.dgvAdminCall.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAdminCall.Location = new System.Drawing.Point(0, 0);
+            this.dgvAdminCall.MultiSelect = false;
             this.dgvAdminCall.Name = "dgvAdminCall";
             this.dgvAdminCall.RowTemplate.Height = 25;
             this.dgvAdminCall.Size = new System.Drawing.Size(656, 222);
@@ -443,7 +448,7 @@ namespace cellular
             this.tabPageClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminClient)).EndInit();
             this.tabPageTariff.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTariff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdminTariff)).EndInit();
             this.tabPagePhoneNumber.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminPhoneNumber)).EndInit();
             this.tabPageCall.ResumeLayout(false);
@@ -488,7 +493,7 @@ namespace cellular
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.TabPage tabPageTariff;
-        private System.Windows.Forms.DataGridView dgvTariff;
+        private System.Windows.Forms.DataGridView dgvAdminTariff;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
